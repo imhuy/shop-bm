@@ -164,62 +164,6 @@ const History: NextPage<any> = () => {
                       <td className="text-center font-normal text-sm w-32    ">
                         <span className=" font-normal text-sm  ">-</span>
                       </td>
-                      <td className="text-center font-normal text-sm w-20    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.currency}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-16    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-20    ">
-                        <span className=" font-normal text-sm  ">-</span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-44    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32      ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-48     ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-20      ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
