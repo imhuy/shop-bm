@@ -123,9 +123,7 @@ const Rechange: NextPage<any> = () => {
                   </button>
                 </div>
                 <div className="flex  justify-between  text-sm bg-slate-100 rounded-md p-3 ">
-                  <p className=" w-2/5 font-workSansMedium ">
-                    Nội dung chuyển tiền
-                  </p>
+                  <p className=" w-2/5 font-workSansMedium ">Nội dung</p>
                   <p className="w-2/5  font-workSansMedium text-red-500 ">
                     VIA90211893
                   </p>
