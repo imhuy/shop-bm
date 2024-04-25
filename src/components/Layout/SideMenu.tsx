@@ -78,9 +78,12 @@ const SideMenu = () => {
       <ul className="w-full  ">
         <li className="mb-8 border-b border-black border-opacity-10">
           <button className="cursor-pointer flex  w-full justify-center">
-            <h1 className=" font-workSansBold mb-2 text-3xl text-center">
+            <a
+              href="/"
+              className=" font-workSansBold mb-2 text-3xl text-center"
+            >
               Shopbm.Com{" "}
-            </h1>
+            </a>
           </button>
         </li>
         <div className=" border-b border-black border-opacity-10">
@@ -89,7 +92,7 @@ const SideMenu = () => {
           </p>
           {listMenu.map((value, index) => {
             return (
-              <li className="mt-2" key={value.key}>
+              <li className="mt-2 ml-2" key={value.key}>
                 <div
                   className={`p-[10px] pl-5 transition-all duration-300 ${_checkActiveTab(
                     value,
@@ -118,7 +121,7 @@ const SideMenu = () => {
           </p>
           {listMenu2.map((value, index) => {
             return (
-              <li className="mt-2" key={value.key}>
+              <li className="mt-2 ml-2" key={value.key}>
                 <div
                   className={`p-[10px] pl-5 transition-all   duration-300 ${_checkActiveTab(
                     value,
@@ -147,7 +150,7 @@ const SideMenu = () => {
 
         {listMenu3.map((value, index) => {
           return (
-            <li className="mt-2" key={value.key}>
+            <li className="mt-2 ml-2" key={value.key}>
               <div
                 className={`p-[10px] pl-5 transition-all  duration-300 ${_checkActiveTab(
                   value,
@@ -173,18 +176,18 @@ const SideMenu = () => {
       <div className="absolute left-0 bottom-0 border-t border-black border-opacity-10 w-full px-6 pt-4 pb-6">
         <ul>
           <li className="mt-2">
-            <Link href={"https://twitter.com/alphaquestio"} target="_blank">
+            <Link href={"https://twitter.com/"} target="_blank">
               Twitter
             </Link>
           </li>
 
           <li className="mt-2">
-            <Link href={"https://t.me/alphaquestio"} target="_blank">
+            <Link href={"https://t.me/imhuy"} target="_blank">
               Support
             </Link>
           </li>
           <li className="mt-2">
-            <Link href={"https://discord.gg/EsMqKqjKB2"} target="_blank">
+            <Link href={"https://discord.gg/"} target="_blank">
               Discord
             </Link>
           </li>

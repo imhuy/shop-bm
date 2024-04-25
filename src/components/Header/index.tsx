@@ -17,6 +17,7 @@ type SideMenuMobile = {
   label: string;
   href: string;
   isChildren?: boolean;
+  isParent?: boolean;
 };
 
 const Header: FC<IHeader> = ({ title }) => {
@@ -45,13 +46,14 @@ const Header: FC<IHeader> = ({ title }) => {
     {
       label: "Mua tài khoản",
       icon: <HeartIcon className="h-6 w-6" />,
-      href: "",
+      href: "/",
     },
 
     {
       label: "Tài khoản",
       icon: <FolderIcon className="h-6 w-6" />,
       href: "",
+      isParent: true,
     },
     {
       label: "Nạp tiền",
@@ -72,6 +74,7 @@ const Header: FC<IHeader> = ({ title }) => {
       label: "Công cụ",
       icon: <FolderIcon className="h-6 w-6" />,
       href: "",
+      isParent: true,
     },
     {
       label: "Tut miễn phí",
@@ -103,9 +106,7 @@ const Header: FC<IHeader> = ({ title }) => {
               color="black"
               onClick={() => setOpenMenuMobile(true)}
             />
-            <h1 className=" font-workSansBold  text-3xl text-center">
-              Shopbm.Com{" "}
-            </h1>
+            <h1 className=" font-workSansBold  text-center">ShopBm </h1>
           </div>
           {openMenuMobile && (
             <div className="fixed h-screen  bg-white z-[1000] top-0 left-0 w-full flex flex-col gap-4 px-6 pt-6">
@@ -115,23 +116,29 @@ const Header: FC<IHeader> = ({ title }) => {
               />
               <div className="flex flex-col">
                 {sideMenuMobile?.map((sideItem: SideMenuMobile, i: number) => (
-                  <div
+                  <a
                     key={i}
                     className={`${
                       sideItem?.isChildren
                         ? "py-4 ml-14"
                         : "flex gap-4 items-center p-4"
-                    } mr-4 border-b border-gray-800 hover:bg-success-500`}
-                    onClick={() => {
-                      router.push(sideItem?.href);
-                      setOpenMenuMobile(false);
-                    }}
+                    } mr-4 border-b border-gray-800 ${
+                      !sideItem.isParent ? " hover:bg-success-500" : ""
+                    }`}
+                    href={sideItem?.href}
                   >
-                    {sideItem?.icon}
-                    <span className=" font-workSansSemiBold">
-                      {sideItem?.label}
-                    </span>
-                  </div>
+                    <button
+                      onClick={() => {
+                        setOpenMenuMobile(false);
+                      }}
+                      className=" flex gap-x-4"
+                    >
+                      {sideItem?.icon}
+                      <span className=" font-workSansSemiBold">
+                        {sideItem?.label}
+                      </span>
+                    </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -196,20 +203,24 @@ const Header: FC<IHeader> = ({ title }) => {
         </button> */}
 
         <div className="  max-lg:mx-0">
-          <button
-            onClick={onGoLogin}
-            className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   "
-          >
-            Login
-          </button>
+          <a href="/client/login">
+            <button
+              onClick={onGoLogin}
+              className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   "
+            >
+              Login
+            </button>
+          </a>
         </div>
         <div className="max-lg:mx-0">
-          <button
-            onClick={onGoSignup}
-            className="py-2 px-4  font-workSansSemiBold text-sm  "
-          >
-            Sign up
-          </button>
+          <a href="/client/register">
+            <button
+              onClick={onGoSignup}
+              className="py-2 px-4  font-workSansSemiBold text-sm  "
+            >
+              Sign up
+            </button>
+          </a>
         </div>
       </div>
     </div>
