@@ -235,7 +235,7 @@ const AppContent: FC<AppContentTypes> = ({
                         className="w-[85%]"
                         onClick={() => setIsOpenChangePassword(true)}
                       >
-                        <p className=" bg-primary-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
+                        <p className=" bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                           MUA NGAY
                         </p>
                       </button>
@@ -357,7 +357,7 @@ const AppContent: FC<AppContentTypes> = ({
                         className="w-[85%]"
                         onClick={() => setIsOpenChangePassword(true)}
                       >
-                        <p className=" bg-primary-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
+                        <p className=" bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                           MUA NGAY
                         </p>
                       </button>

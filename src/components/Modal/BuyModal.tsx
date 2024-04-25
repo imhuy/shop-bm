@@ -103,29 +103,47 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                   onSubmit={onSubmit}
                 >
                   <AQInput
+                    className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     name="currentPassword"
-                    labelText="Current password"
-                    placeholder="Enter current password"
+                    labelText="Tên Sản phẩm"
+                    placeholder="Via Việt XMDT mới về"
                     containerClassName="mt-5"
                     type="password"
-                    disabled={isLoading}
+                    disabled={true}
                   />
                   <AQInput
                     name="newPassword"
-                    labelText="New password"
-                    placeholder="Enter new password"
+                    className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
+                    labelText="Số lượng cần mua:"
+                    placeholder="Nhập số lượng cần mua"
                     containerClassName="mt-5"
-                    type="password"
+                    // type="password"
                     disabled={isLoading}
                   />
                   <AQInput
                     name="confirmPassword"
-                    labelText="Confirm password"
+                    className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
+                    labelText="Mã giảm giá (nếu có)"
                     placeholder="Enter confirm password"
                     containerClassName="mt-5"
-                    type="password"
+                    // type="password"
                     disabled={isLoading}
                   />
+
+                  <div className="text-sm  my-4 gap-y-3 flex flex-col">
+                    <div className="flex justify-between border-b py-2">
+                      <p className=" ">Giảm giá: </p>
+                      <p className=" text-red-500 font-workSansSemiBold ">0đ</p>
+                    </div>
+
+                    <div className="flex justify-between">
+                      <p className="   ">Tổng tiền: </p>
+                      <p className="text-red-500 font-workSansSemiBold ">
+                        5000đ
+                      </p>
+                    </div>
+                  </div>
+
                   <div className="mt-4 flex justify-end">
                     <button
                       type="button"
@@ -140,8 +158,9 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                       type="submit"
                       className="inline-flex ml-3 justify-center items-center rounded-md border border-transparent bg-success-500 hover:bg-success-600 px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       disabled={isLoading}
+                      onClick={closeModal}
                     >
-                      {isLoading ? <Spinner /> : <p>Change you password</p>}
+                      {isLoading ? <Spinner /> : <p>Thanh Toán</p>}
                     </button>
                   </div>
                 </AQForm>
