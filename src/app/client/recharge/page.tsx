@@ -15,7 +15,7 @@ const Rechange: NextPage<any> = () => {
       tradingCode: "TSKW1683822924",
       product: "Via Việt XMDT mới về ",
       quantity: 10,
-      date: "2022",
+      date: "25-04-2022",
       pay: 1000,
     },
 
@@ -23,7 +23,7 @@ const Rechange: NextPage<any> = () => {
       tradingCode: "TSKW1683822924",
       product: "Via Việt XMDT mới về ",
       quantity: 10,
-      date: "2022",
+      date: "25-04-2022",
       pay: 1000,
     },
 
@@ -31,7 +31,7 @@ const Rechange: NextPage<any> = () => {
       tradingCode: "TSKW1683822924",
       product: "Via Việt XMDT mới về ",
       quantity: 10,
-      date: "2022",
+      date: "25-04-2022",
       pay: 1000,
     },
 
@@ -39,7 +39,7 @@ const Rechange: NextPage<any> = () => {
       tradingCode: "TSKW1683822924",
       product: "Via Việt XMDT mới về ",
       quantity: 10,
-      date: "2022",
+      date: "25-04-2022",
       pay: 1000,
     },
   ]);
@@ -61,19 +61,25 @@ const Rechange: NextPage<any> = () => {
               <p className=" font-workSansSemiBold text-2xl text-primary-500">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Tổng Tiền Nạp</p>
+              <p className="   text-sm font-workSansSemiBold  text-center mt-1">
+                Tổng Tiền Nạp
+              </p>
             </div>
             <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-green-600">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Đã Sử Dụng</p>
+              <p className="  text-sm font-workSansSemiBold  text-center mt-1">
+                Đã Sử Dụng
+              </p>
             </div>
             <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-blue-500">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Còn Lại</p>
+              <p className="   text-sm font-workSansSemiBold  text-center mt-1">
+                Còn Lại
+              </p>
             </div>
           </div>
           <div className="w-[95%] justify-center flex flex-col  gap-y-8  bg-white  border shadow-md rounded-md ">
@@ -158,36 +164,25 @@ const Rechange: NextPage<any> = () => {
             <div className="scrollmenu  ">
               <table>
                 <thead>
-                  <tr className="flex gap-x-6 px-5 mb-5 mt-2">
+                  <tr className="flex gap-x-6 px-5 mb-5 mt-2 font-workSansBold">
                     <th className=" w-4  text-start">
                       <span className=" font-semibold text-sm"># </span>{" "}
                     </th>
-                    <th className=" w-20 max-w-[80px]  text-center">
-                      <span className="font-semibold text-sm ">Số lượng </span>{" "}
+                    <th className="  w-48 max-w-64 text-center">
+                      <span className="  text-sm ">Số tiền trước </span>{" "}
                     </th>
-                    <th className=" w-40 max-w-[160px] text-center">
-                      <span className=" font-semibold text-sm ">
-                        {" "}
-                        Mã giao dịch{" "}
-                      </span>{" "}
+                    <th className="  w-48 max-w-64 text-center">
+                      <span className="   text-sm "> Số tiền nạp </span>{" "}
                     </th>
-                    <th className=" w-52  text-center">
-                      <span className=" font-semibold text-sm  ">
-                        Sản phẩm{" "}
-                      </span>{" "}
-                    </th>
-                    <th className=" w-40    text-center">
-                      <span className=" font-semibold text-sm  ">
-                        Thanh toán{" "}
-                      </span>{" "}
+
+                    <th className=" w-48 max-w-64   text-center">
+                      <span className="   text-sm  ">Số tiền sau </span>{" "}
                     </th>
                     <th className=" w-32  text-center">
-                      <span className=" font-semibold text-sm  ">
-                        Thời gian{" "}
-                      </span>{" "}
+                      <span className="  text-sm  ">Thời gian </span>{" "}
                     </th>
-                    <th className=" w-32  text-center">
-                      <span className=" font-semibold text-sm  ">Thao tác</span>{" "}
+                    <th className=" w-64 max-w-96  text-center">
+                      <span className="   text-sm  ">Nội dung</span>{" "}
                     </th>
                   </tr>
                 </thead>
@@ -203,25 +198,21 @@ const Rechange: NextPage<any> = () => {
                       <td className=" text-start  w-4  ">
                         <span className="font-normal text-sm">{i + 1} </span>
                       </td>
-                      <td className="text-center font-normal text-sm w-20 max-w-[80px]  ">
+                      <td className="text-center font-normal text-sm  w-48 max-w-64 ">
                         <span className=" font-normal text-sm  ">
-                          {convertNumbThousand(item?.quantity)}{" "}
+                          {convertNumbThousand(1000)}
+                          {"đ"}
                         </span>
                       </td>
-                      <td className="text-center font-normal text-sm  w-40 max-w-[160px]  ">
+                      <td className="text-center font-normal text-sm  w-48 max-w-64 ">
                         <span className=" font-normal text-sm  ">
-                          {item?.tradingCode}
-                        </span>
-                      </td>
-                      <td className="text-center font-normal text-sm w-52">
-                        <span className=" font-normal text-sm  ">
-                          {item?.product}
+                          {convertNumbThousand(9000)}đ
                         </span>
                       </td>
 
-                      <td className="text-center font-normal text-sm w-40">
+                      <td className="text-center font-normal text-sm  w-48 max-w-64 ">
                         <span className=" font-normal text-sm  ">
-                          {convertNumbThousand(item?.pay)}đ
+                          {convertNumbThousand(10000)}đ
                         </span>
                       </td>
                       <td className="text-center font-normal text-sm w-32    ">
@@ -229,63 +220,9 @@ const Rechange: NextPage<any> = () => {
                           {item?.date}
                         </span>
                       </td>
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">-</span>
-                      </td>
-                      <td className="text-center font-normal text-sm w-20    ">
+                      <td className="text-center font-normal text-sm w-64 max-w-96    ">
                         <span className=" font-normal text-sm  ">
-                          {item?.currency}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-16    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-20    ">
-                        <span className=" font-normal text-sm  ">-</span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-44    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-32      ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-48     ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-
-                      <td className="text-center font-normal text-sm w-20      ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
-                        </span>
-                      </td>
-                      <td className="text-center font-normal text-sm w-32    ">
-                        <span className=" font-normal text-sm  ">
-                          {item?.adtrust_dsl}
+                          Nạp tiền vào tài khoản admin
                         </span>
                       </td>
                     </tr>

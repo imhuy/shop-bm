@@ -5,8 +5,6 @@ import convertNumbThousand from "@/utils/convertNumbThousand";
 import { NextPage } from "next";
 import { useState } from "react";
 
- 
-
 interface ItemType {
   // id: string;
   tradingCode: string;
@@ -62,19 +60,25 @@ const History: NextPage<any> = () => {
               <p className=" font-workSansSemiBold text-2xl text-primary-500">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Tổng Tiền Nạp</p>
+              <p className="   text-sm font-workSansSemiBold  text-center mt-1">
+                Tổng Tiền Nạp
+              </p>
             </div>
             <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-green-600">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Đã Sử Dụng</p>
+              <p className="   text-sm font-workSansSemiBold  text-center mt-1">
+                Đã Sử Dụng
+              </p>
             </div>
             <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-blue-500">
                 {convertNumbThousand(500000)}
               </p>
-              <p className=" font-workSansMedium text-lg mt-1">Còn Lại</p>
+              <p className="   text-sm font-workSansSemiBold  text-center mt-1">
+                Còn Lại
+              </p>
             </div>
           </div>
           <div className="w-[95%] overflow-auto	scrollmenu justify-center flex flex-col gap-y-8 bg-white  border shadow-md rounded-md ">
