@@ -20,7 +20,10 @@ const config: Config = {
             500: "#345CC1",
           },
         },
-
+        select: {
+          500: "#FFEAF4",
+          700: "#F14658",
+        },
         success: {
           600: "#2c9e80",
           500: "#24B592",

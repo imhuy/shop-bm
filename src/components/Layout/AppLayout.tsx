@@ -8,10 +8,9 @@ interface AppLayoutTypes {
 const AppLayout: FC<AppLayoutTypes> = ({ children }) => {
   return (
     <div>
-      <div className="flex pl-72 max-lg:pl-0">
+      <div className="flex pl-72 bg-[#E9F2FD] max-lg:pl-0">
         {children}
-
-        <SideMenu />
+        {/* <SideMenu /> */}
       </div>
     </div>
   );
