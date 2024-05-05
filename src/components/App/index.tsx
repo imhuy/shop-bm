@@ -99,11 +99,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
               <div className=" flex  items-center gap-x-2 ">
                 {" "}
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon
-                    color="#f25062"
-                    className="b  "
-                    icon="ri-facebook-circle-fill"
-                  />
+                  <Icon color="#f25062" icon="ri-facebook-circle-fill" />
                 </div>
                 <span className="text-sm">
                   Hệ thống{" "}
@@ -117,11 +113,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
               <div className=" flex  items-center gap-x-2 ">
                 {" "}
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon
-                    color="#f25062"
-                    className="b  "
-                    icon="ri-profile-fill"
-                  />
+                  <Icon color="#f25062" icon="ri-profile-fill" />
                 </div>
                 <span className="text-sm">
                   Hệ thống làm phôi và nhiều chức năng khác
@@ -130,11 +122,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
               <div className=" flex  items-center gap-x-2 ">
                 {" "}
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon
-                    color="#f25062"
-                    className="b  "
-                    icon="ri-shield-check-fill"
-                  />
+                  <Icon color="#f25062" icon="ri-shield-check-fill" />
                 </div>
                 <span className="text-sm">
                   <span className=" font-workSansSemiBold"> BM2FA.COM </span>
@@ -149,27 +137,19 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
             <div className="flex flex-col gap-y-3 mt-4 ml-2 ">
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon
-                    color="#f25062"
-                    className="b  "
-                    icon="ri-money-dollar-circle-fill"
-                  />
+                  <Icon color="#f25062" icon="ri-money-dollar-circle-fill" />
                 </div>
                 <span className="text-sm">Thanh toán</span>
               </div>
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon
-                    color="#f25062"
-                    className="b  "
-                    icon="ri-shield-keyhole-fill"
-                  />
+                  <Icon color="#f25062" icon="ri-shield-keyhole-fill" />
                 </div>
                 <span className="text-sm">Bảo mật tài khoản</span>
               </div>
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon color="#f25062" className="b  " icon="ri-medal-fill" />
+                  <Icon color="#f25062" icon="ri-medal-fill" />
                 </div>
                 <span className="text-sm">Chính sách bảo hành</span>
               </div>
@@ -180,19 +160,19 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
             <div className="flex flex-col gap-y-3 mt-4 ml-2 ">
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon color="#f25062" className="b  " icon="ri-medal-fill" />
+                  <Icon color="#f25062" icon="ri-map-pin-fill" />
                 </div>
                 <span className="text-sm">Địa Chỉ: Hà Huy Ngọc - Hà Nội</span>
               </div>
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon color="#f25062" className="b  " icon="ri-medal-fill" />
+                  <Icon color="#f25062" icon="ri-phone-fill" />
                 </div>
                 <span className="text-sm">Phone: 093.831.9999</span>
               </div>
               <div className=" flex  items-center gap-x-2 ">
                 <div className=" size-8 bg-[#FEEAF3] rounded-full flex justify-center items-center">
-                  <Icon color="#f25062" className="b  " icon="ri-medal-fill" />
+                  <Icon color="#f25062" icon="ri-mail-fill" />
                 </div>
                 <span className="text-sm">Email: Admin@bm2fa.com</span>
               </div>

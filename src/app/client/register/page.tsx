@@ -6,12 +6,12 @@ import { NextPage } from "next";
 const Register: NextPage<any> = () => {
   return (
     <AppLayout>
-      <div className="w-full flex flex-col">
-        <div className="px-6">
+      <div className="w-full h-screen flex flex-col">
+        <div className="p-6">
           <Header title="Register" />
-          <div className="h-[1px] bg-black bg-opacity-20 mt-4 max-lg:hidden" />
+          <div className="h-[1px] bg-black   bg-opacity-20 my-4 max-lg:hidden" />
         </div>
-        <div className=" flex flex-1  min-h-[100vh] bg-[#E9F2FD] items-center  justify-center">
+        <div className=" flex    bg-[#E9F2FD] items-center  justify-center">
           <div className="w-full sm:w-full md:w-1/2 max-w-full mx-4  justify-center flex flex-col gap-y-4 bg-white  border shadow-md rounded-md ">
             <div className="border-b px-4 py-5 justify-center flex gap-x-4">
               <span className=" font-workSansSemiBold rounded-md p-2 ">
