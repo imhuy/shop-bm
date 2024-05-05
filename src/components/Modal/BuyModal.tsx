@@ -93,7 +93,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Please enter your old password and your new password.
+                    {/* Please enter your old password and your new password. */}
                   </p>
                 </div>
 
@@ -124,7 +124,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     name="confirmPassword"
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     labelText="Mã giảm giá (nếu có)"
-                    placeholder="Enter confirm password"
+                    placeholder="Mã giảm giá"
                     containerClassName="mt-5"
                     // type="password"
                     disabled={isLoading}

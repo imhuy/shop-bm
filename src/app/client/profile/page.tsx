@@ -7,33 +7,33 @@ import { NextPage } from "next";
 const Profile: NextPage<any> = () => {
   return (
     <AppLayout>
-      <div className="w-full flex flex-col">
+      <div className="w-full h-screen flex flex-col">
         <div className="p-6">
           <Header />
-          <div className="h-[1px] bg-black bg-opacity-20 my-4 max-lg:hidden" />
+          <div className="h-[1px] bg-black   bg-opacity-20 my-4 max-lg:hidden" />
         </div>
-        <div className="w-full flex flex-col items-center gap-y-6">
-          <div className="mt-4  w-[90%]  flex flex-wrap justify-between ">
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+        <div className="w-full flex flex-col items-center  gap-y-6">
+          <div className="mt-4  w-[95%] flex flex-wrap justify-between ">
+            <div className="w-[30%] py-10 flex flex-col items-center   bg-white   border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-primary-500">
                 {convertNumbThousand(500000)}
               </p>
               <p className=" font-workSansMedium text-lg mt-1">Tổng Tiền Nạp</p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 flex flex-col items-center bg-white     border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-green-600">
                 {convertNumbThousand(500000)}
               </p>
               <p className=" font-workSansMedium text-lg mt-1">Đã Sử Dụng</p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 flex flex-col items-center bg-white     border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-blue-500">
                 {convertNumbThousand(500000)}
               </p>
               <p className=" font-workSansMedium text-lg mt-1">Còn Lại</p>
             </div>
           </div>
-          <div className="w-[90%] justify-center flex flex-col gap-y-8 bg-white  border shadow-md rounded-md ">
+          <div className="w-[95%] justify-center flex flex-col gap-y-8 bg-white  border shadow-md rounded-md ">
             <div className="border-b px-4 py-5 flex gap-x-4">
               <span className=" font-workSansBold text-white  bg-blue-500 rounded-md p-2 ">
                 Thông Tin Cá Nhân

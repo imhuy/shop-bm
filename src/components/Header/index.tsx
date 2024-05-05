@@ -38,6 +38,7 @@ const Header: FC<IHeader> = ({ title }) => {
     if (pathname.indexOf("client/recharge") !== -1) return "Nạp Tiền";
     if (pathname.indexOf("client/profile") !== -1) return "Thông tin cá nhân";
     if (pathname.indexOf("/order/history") !== -1) return "Lịch sử giao dịch";
+    if (pathname.indexOf("client/contact") !== -1) return "Liên hệ";
     if (title) return title;
     return "Home";
   };
@@ -94,7 +95,7 @@ const Header: FC<IHeader> = ({ title }) => {
   ];
 
   return (
-    <div className="flex justify-between items-center w-full">
+    <div className="flex justify-between  items-center w-full">
       <div>
         <h1 className="font-workSansSemiBold text-[36px] max-lg:hidden">
           {renderTitle()}

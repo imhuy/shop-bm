@@ -57,7 +57,7 @@ const Rechange: NextPage<any> = () => {
         </div>
         <div className="w-full flex flex-col mb-10 items-center gap-y-6">
           <div className="mt-4  w-[95%]  flex flex-wrap justify-between ">
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 bg-white flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-primary-500">
                 {convertNumbThousand(500000)}
               </p>
@@ -65,7 +65,7 @@ const Rechange: NextPage<any> = () => {
                 Tổng Tiền Nạp
               </p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 bg-white flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-green-600">
                 {convertNumbThousand(500000)}
               </p>
@@ -73,7 +73,7 @@ const Rechange: NextPage<any> = () => {
                 Đã Sử Dụng
               </p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 flex bg-white flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-blue-500">
                 {convertNumbThousand(500000)}
               </p>

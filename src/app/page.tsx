@@ -49,9 +49,9 @@ const Home: NextPage<any> = () => {
   return (
     <AppLayout>
       <div className="w-full flex flex-col">
-        <div className="p-6">
+        <div className="p-6   ">
           <Header />
-          <div className="h-[1px] bg-black bg-opacity-20 my-4 max-lg:hidden" />
+          <div className="h-[1px] bg-black  bg-opacity-20 my-4 max-lg:hidden" />
 
           <div className="  bg-[#CEF4FC] rounded-md ">
             <p className="flex  flex-row my-4  p-5 max-lg:p-1 text-[15px] text-[#06798F] font-workSansMedium text-center">

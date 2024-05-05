@@ -49,14 +49,14 @@ const History: NextPage<any> = () => {
   ]);
   return (
     <AppLayout>
-      <div className="w-full flex flex-col">
+      <div className="w-full h-screen flex flex-col">
         <div className="p-6">
           <Header />
           <div className="h-[1px] bg-black bg-opacity-20 my-4 max-lg:hidden" />
         </div>
         <div className="w-full flex flex-col items-center gap-y-6">
           <div className="mt-4  w-[95%]  flex flex-wrap justify-between ">
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 bg-white flex flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-primary-500">
                 {convertNumbThousand(500000)}
               </p>
@@ -64,7 +64,7 @@ const History: NextPage<any> = () => {
                 Tổng Tiền Nạp
               </p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 flex bg-white flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-green-600">
                 {convertNumbThousand(500000)}
               </p>
@@ -72,7 +72,7 @@ const History: NextPage<any> = () => {
                 Đã Sử Dụng
               </p>
             </div>
-            <div className="w-[30%] py-10 flex flex-col items-center    border shadow-md rounded-md ">
+            <div className="w-[30%] py-10 flex bg-white flex-col items-center    border shadow-md rounded-md ">
               <p className=" font-workSansSemiBold text-2xl text-blue-500">
                 {convertNumbThousand(500000)}
               </p>
