@@ -107,7 +107,7 @@ const Header: FC<IHeader> = ({ title }) => {
               color="black"
               onClick={() => setOpenMenuMobile(true)}
             />
-            <h1 className=" font-workSansBold  text-center">ShopBm </h1>
+            <h1 className=" font-workSansBold  text-center">BM2FA </h1>
           </div>
           {openMenuMobile && (
             <div className="fixed h-screen  bg-white z-[1000] top-0 left-0 w-full flex flex-col gap-4 px-6 pt-6">

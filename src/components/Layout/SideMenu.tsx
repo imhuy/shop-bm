@@ -148,7 +148,7 @@ const SideMenu = () => {
               href="/"
               className=" font-workSansBold mb-2 text-3xl text-center"
             >
-              Shopbm.Com{" "}
+              BM2FA.COM{" "}
             </a>
           </button>
         </li>
