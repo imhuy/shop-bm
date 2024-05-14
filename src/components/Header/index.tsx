@@ -1,3 +1,4 @@
+import { AuthContext } from "@/context/useAuthContext";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import {
   Bars3Icon,
@@ -6,7 +7,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter, usePathname } from "next/navigation";
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useContext, useEffect, useRef, useState } from "react";
 
 interface IHeader {
   title?: string;
@@ -28,9 +29,7 @@ const Header: FC<IHeader> = ({ title }) => {
 
   const [openMenuMobile, setOpenMenuMobile] = useState(false);
   const pathname = usePathname();
-  const onGoLogin = () => {};
-
-  const onGoSignup = () => {};
+  const { authState } = useContext(AuthContext);
 
   const renderTitle = () => {
     if (pathname === "/alpha-hunters/mentioned")
@@ -94,6 +93,7 @@ const Header: FC<IHeader> = ({ title }) => {
     },
   ];
 
+ 
   return (
     <div className="flex justify-between  items-center w-full">
       <div>
@@ -202,27 +202,35 @@ const Header: FC<IHeader> = ({ title }) => {
         <button id="search-btn">
           <MagnifyingGlassIcon className="w-5 h-5 text-white hidden max-lg:block" />
         </button> */}
-
-        <div className="  max-lg:mx-0">
-          <a href="/client/login">
-            <button
-              onClick={onGoLogin}
-              className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   "
-            >
-              Login
-            </button>
-          </a>
-        </div>
-        <div className="max-lg:mx-0">
-          <a href="/client/register">
-            <button
-              onClick={onGoSignup}
-              className="py-2 px-4  font-workSansSemiBold text-sm  "
-            >
-              Sign up
-            </button>
-          </a>
-        </div>
+        {authState ? (
+          <div className="flex">
+            <div className="  max-lg:mx-0">
+              <button className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   ">
+                Đã login
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex">
+            <div className="  max-lg:mx-0">
+              <a href="/client/login">
+                <button className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   ">
+                  Login
+                </button>
+              </a>
+            </div>
+            <div className="max-lg:mx-0">
+              <a href="/client/register">
+                <button
+                  // onClick={onGoSignup}
+                  className="py-2 px-4  font-workSansSemiBold text-sm  "
+                >
+                  Sign up
+                </button>
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,10 +1,16 @@
 "use client";
 import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
+import { AuthContext } from "@/context/useAuthContext";
 import convertNumbThousand from "@/utils/convertNumbThousand";
 import { NextPage } from "next";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
 
 const Profile: NextPage<any> = () => {
+  const { handleLogOut, authState, accountExtendDetail, canCancel } =
+    useContext(AuthContext);
+  const router = useRouter();
   return (
     <AppLayout>
       <div className="w-full h-screen flex flex-col">
@@ -83,7 +89,10 @@ const Profile: NextPage<any> = () => {
               <div className="flex ">
                 <button
                   className="w-[100%]"
-                  // onClick={() => setIsOpenChangePassword(true)}
+                  onClick={() => {
+                    handleLogOut();
+                    router.push("login");
+                  }}
                 >
                   <p className=" bg-primary-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                     Đăng xuất

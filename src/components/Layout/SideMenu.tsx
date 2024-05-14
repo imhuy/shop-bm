@@ -1,4 +1,5 @@
 "use client";
+import { AvatarIcon, DollarIcon } from "@/assets/icon";
 import {
   FacebookIcon,
   AdsIcon,
@@ -142,14 +143,43 @@ const SideMenu = () => {
   return (
     <aside className="fixed transition-all bg-white  overflow-auto  duration-300 top-0 left-0 z-40 w-80 h-screen border-r border-black  border-opacity-10  py-6 max-lg:hidden">
       <ul className="w-full    ">
-        <li className="mb-8 border-b border-black border-opacity-10">
-          <button className="cursor-pointer flex  w-full justify-center">
-            <a
+        <li className="mb-4 border-b border-black border-opacity-10">
+          <button className="cursor-pointer flex  flex-col ml-4  mb-2  w-full justify-center">
+            <div className="flex ">
+              <div className="flex  w-full   gap-2 ">
+                <div className="flex border border-red-500 rounded-full p-2">
+                  <Image
+                    src={AvatarIcon}
+                    className=" size-10"
+                    alt="avatar"
+                  ></Image>
+                </div>
+
+                <div className="flex flex-col justify-center   gap-y-1 ">
+                  <div className="flex">
+                    <span className=" font-workSansSemiBold  ml-2">Huylv</span>
+                  </div>
+
+                  <div className="flex text-sm  font-workSansSemiBold  w-28 px-2 h-5 bg-[#FFF1CC] justify-around items-center rounded-2xl">
+                    <Image
+                      src={DollarIcon}
+                      className=" size-4"
+                      alt="avatar"
+                    ></Image>
+                    <span>0đ</span>
+                    <span>-</span>
+                    <span className=" text-red-500">0%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* <a
               href="/"
               className=" font-workSansBold mb-2 text-3xl text-center"
             >
               BM2FA.COM{" "}
-            </a>
+            </a> */}
           </button>
         </li>
         <div className=" border-b border-black border-opacity-10">

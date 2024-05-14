@@ -1,8 +1,9 @@
+"use client";
 import SideMenu from "@/components/Layout/SideMenu";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import AppLayout from "@/components/Layout/AppLayout";
-import AppContent from "@/components/App";
+
+import ContextConsumer from "@/context";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,16 +13,16 @@ const poppins = Poppins({
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: any;
 }) {
   return (
     <html lang="en" dir="" className={poppins.className}>
       <body className=" ">
-        {children}
-        <SideMenu />
+        <ContextConsumer>
+          {children}
+          <SideMenu />
+        </ContextConsumer>
       </body>
     </html>
   );

@@ -75,14 +75,13 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 1px solid "#38405B";
-  -webkit-text-fill-color: white;
   -webkit-box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 1px;
 }
 
 /* Track */

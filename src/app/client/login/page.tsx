@@ -1,9 +1,43 @@
 "use client";
+import ApiAuth from "@/api-client/auth";
 import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
+import { AuthContext } from "@/context/useAuthContext";
 import { NextPage } from "next";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 const Login: NextPage<any> = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const { handleLogged, authState } = useContext(AuthContext);
+  const authApi = new ApiAuth();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (authState) {
+      router.push("/client/profile");
+    } else {
+      console.log("not logined");
+    }
+  }, [authState]);
+  const onSubmit = async (data: any) => {
+    try {
+      setIsLoading(true);
+      let res = await authApi.login({
+        username: data.username,
+        password: data.password,
+      });
+
+      handleLogged(res);
+      setIsLoading(false);
+      router.push("/client/profile");
+      console.log("routerrouter", router);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <AppLayout>
       <div className="w-full h-screen flex flex-col">
@@ -21,9 +55,9 @@ const Login: NextPage<any> = () => {
 
             <div className="flex flex-col  gap-y-4 justify-center w-[100%] items-center    ">
               <div className="flex w-[90%]  flex-col  ">
-                <p className=" font-workSansMedium  mb-2 ">Tên đăng nhập</p>
+                <p className=" font-workSansMedium    mb-2 ">Tên đăng nhập</p>
                 <input
-                  className="w-[100%] border h-12 rounded-md px-2"
+                  className="w-[100%] border h-12  rounded-md px-2"
                   placeholder="Nhập email hoặc tên đăng nhập"
                 ></input>
               </div>
@@ -59,6 +93,7 @@ const Login: NextPage<any> = () => {
                 <div className="flex ">
                   <button
                     className="w-[100%]"
+
                     // onClick={() => setIsOpenChangePassword(true)}
                   >
                     <p className="  text-sm  font-extrabold  text-blue-700  border-slate-400 rounded-md flex items-center justify-center 	">
@@ -70,8 +105,13 @@ const Login: NextPage<any> = () => {
             </div>
 
             <div className="w-[100%] flex  justify-center my-4 ">
-              <button className=" bg-blue-500 w-[80%] text-white  font-workSansSemiBold py-3 rounded-md">
-                Đăng nhập
+              <button
+                onClick={() =>
+                  onSubmit({ username: "huylv", password: "Huy123456@" })
+                }
+                className=" bg-blue-500 w-[80%] text-white  font-workSansSemiBold py-3 rounded-md"
+              >
+                {isLoading ? "Đang xử lý..." : "Đăng nhập"}
               </button>
             </div>
 
