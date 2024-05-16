@@ -45,11 +45,11 @@ export const useAuthContext = (): IAuthContext => {
   useEffect(() => {
     const dataLocal = localStorage.getItem("AQToken") ?? "null";
     const auth = JSON.parse(dataLocal);
-    console.log("authauthauthauth", auth);
     setAuthState(auth);
   }, []);
 
   useEffect(() => {
+    console.log("authStateauthStatexxxx", authState?.access_token);
     if (authState?.access_token) {
       getAccountExtendDetails();
       getCanCancel();
@@ -75,12 +75,6 @@ export const useAuthContext = (): IAuthContext => {
     return () => clearInterval(expireInterval);
   });
 
-  const getUserInfo = async () => {
-    const userInfoData = await apiAuth.getUserInfo(
-      authState?.access_token ?? ""
-    );
-  };
-
   const getCanCancel = async () => {
     try {
       const canCancelRes = await apiAuth.canCancel(
@@ -95,12 +89,10 @@ export const useAuthContext = (): IAuthContext => {
 
   const getAccountExtendDetails = async () => {
     try {
-      const accountEDData = await apiAuth.getAccountExtendDetails(
+      const accountData = await apiAuth.getAccountExtendDetails(
         authState?.access_token ?? ""
       );
-      setAccountExtendDetail(accountEDData);
-      localStorage.setItem("userId", accountEDData?.id);
-      //   mixpanelSetUserId(accountEDData.username);
+      setAccountExtendDetail(accountData);
 
       return;
     } catch (error) {

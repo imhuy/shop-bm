@@ -9,21 +9,23 @@ export interface LoginResponseType {
 
 export interface AccountDetailResponse {
   id: string;
-  name: string;
-  currentPlanKey: string;
-  planExpiredAt: string;
+  username: string;
+  full_name: string;
+  phone_number: string;
+  role_key: number;
+  avatar: string;
   createdAt: string;
   email: string;
-  inviteCode: string;
-  confirmedEmail: boolean;
-  username: string;
+  login_type: string;
+  status: number;
 }
 
 export interface RegisterParamsType {
-  userName: string;
-  emailAddress: string;
+  username: string;
   password: string;
-  appName: string;
+  email: string;
+  password_again: string;
+  phone_number: string;
 }
 
 export enum UserPayType {

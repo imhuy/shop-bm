@@ -4,4 +4,5 @@ import IconUs from "./us.svg";
 import Ads from "./ads.png";
 import AvatarIcon from "./avatar.png";
 import DollarIcon from "./dollar.png";
-export { TickCircle, IconVn, IconUs, Ads, AvatarIcon, DollarIcon };
+import LoginIcon from "./login.png";
+export { TickCircle, IconVn, IconUs, Ads, AvatarIcon, DollarIcon, LoginIcon };

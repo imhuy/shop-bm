@@ -2,7 +2,8 @@
 import SideMenu from "@/components/Layout/SideMenu";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ContextConsumer from "@/context";
 
 const poppins = Poppins({
@@ -22,6 +23,14 @@ export default function RootLayout({
         <ContextConsumer>
           {children}
           <SideMenu />
+          <ToastContainer
+            position="top-right"
+            theme="dark"
+            hideProgressBar
+            autoClose={2000}
+            style={{ color: "#E25148" }}
+            transition={Slide}
+          />
         </ContextConsumer>
       </body>
     </html>

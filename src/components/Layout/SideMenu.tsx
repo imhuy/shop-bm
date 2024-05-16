@@ -1,26 +1,26 @@
 "use client";
-import { AvatarIcon, DollarIcon } from "@/assets/icon";
 import {
-  FacebookIcon,
   AdsIcon,
   AffiliateIcon,
   ChatIcon,
+  ContactIcon,
   CreditCardIcon,
+  FacebookIcon,
+  HistoryIcon,
   IdCardIcon,
   ProfileIcon,
   QuestionIcon,
   TicketIcon,
-  ToolIcon,
   ToolFbIcon,
-  HistoryIcon,
-  ContactIcon,
+  ToolIcon,
 } from "@/assets/images";
-import { BoltIcon, FireIcon, HeartIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
+import Avatar from "../Avatar";
+import { AuthContext } from "@/context/useAuthContext";
+import { LoginIcon } from "@/assets/icon";
 
 interface MenuItemType {
   key: string;
@@ -31,10 +31,7 @@ interface MenuItemType {
 
 const SideMenu = () => {
   let pathname = usePathname();
-  const onGoApp = () => {
-    // router.push("/projects");
-  };
-
+  const { authState } = useContext(AuthContext);
   const [listMenu] = useState<MenuItemType[]>([
     {
       key: "",
@@ -135,6 +132,10 @@ const SideMenu = () => {
       active: false,
     },
   ]);
+
+  useEffect(() => {
+    console.log("authStateauthStatexx222", authState);
+  });
   const _checkActiveTab = (item: MenuItemType, index?: number) => {
     if (`${pathname}` === `/${item.key}`) return true;
     return false;
@@ -144,43 +145,29 @@ const SideMenu = () => {
     <aside className="fixed transition-all bg-white  overflow-auto  duration-300 top-0 left-0 z-40 w-80 h-screen border-r border-black  border-opacity-10  py-6 max-lg:hidden">
       <ul className="w-full    ">
         <li className="mb-4 border-b border-black border-opacity-10">
-          <button className="cursor-pointer flex  flex-col ml-4  mb-2  w-full justify-center">
-            <div className="flex ">
-              <div className="flex  w-full   gap-2 ">
-                <div className="flex border border-red-500 rounded-full p-2">
+          <div className="flex mb-4">
+            {authState ? (
+              <Avatar />
+            ) : (
+              <a
+                href="/client/login"
+                className="flex w-full justify-center text-white "
+              >
+                <div
+                  className="flex w-[90%] rounded-full items-center  justify-around    font-workSansSemiBold text-md
+                   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50] h-12"
+                >
                   <Image
-                    src={AvatarIcon}
-                    className=" size-10"
+                    src={LoginIcon}
+                    className=" size-6"
                     alt="avatar"
                   ></Image>
+                  <span>Đăng nhập</span>
+                  <span></span>
                 </div>
-
-                <div className="flex flex-col justify-center   gap-y-1 ">
-                  <div className="flex">
-                    <span className=" font-workSansSemiBold  ml-2">Huylv</span>
-                  </div>
-
-                  <div className="flex text-sm  font-workSansSemiBold  w-28 px-2 h-5 bg-[#FFF1CC] justify-around items-center rounded-2xl">
-                    <Image
-                      src={DollarIcon}
-                      className=" size-4"
-                      alt="avatar"
-                    ></Image>
-                    <span>0đ</span>
-                    <span>-</span>
-                    <span className=" text-red-500">0%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* <a
-              href="/"
-              className=" font-workSansBold mb-2 text-3xl text-center"
-            >
-              BM2FA.COM{" "}
-            </a> */}
-          </button>
+              </a>
+            )}
+          </div>
         </li>
         <div className=" border-b border-black border-opacity-10">
           <p className="px-[10px] pl-5  font-workSansSemiBold text-sm text-gray-600 ">
@@ -221,45 +208,47 @@ const SideMenu = () => {
             );
           })}
         </div>
-        <div className=" border-b border-black border-opacity-10">
-          <p className="px-[10px] pl-5 mt-4 font-workSansSemiBold text-md  text-gray-600 ">
-            Tài khoản
-          </p>
-          {listMenu2.map((value, index) => {
-            return (
-              <li className="mt-1  text-[15px] " key={value.key}>
-                <div
-                  className={`p-[10px] pl-5    border-l-4   transition-all duration-300  ${
-                    _checkActiveTab(value)
-                      ? "bg-select-500 border-select-700"
-                      : ""
-                  } w-full`}
-                >
-                  <Link
-                    href={`/${value.key}`}
-                    className={`flex transition-all  items-center  hover:font-workSansSemiBold  hover:px-2  ${
-                      _checkActiveTab(value) ? "text-select-700" : ""
-                    }   duration-300 ${
-                      pathname === value.key
-                        ? "text-dark-900 font-workSansSemiBold"
-                        : "  font-workSansMedium text-dark-900"
-                    }`}
+        {authState && (
+          <div className=" border-b border-black border-opacity-10">
+            <p className="px-[10px] pl-5 mt-4 font-workSansSemiBold text-md  text-gray-600 ">
+              Tài khoản
+            </p>
+            {listMenu2.map((value, index) => {
+              return (
+                <li className="mt-1  text-[15px] " key={value.key}>
+                  <div
+                    className={`p-[10px] pl-5    border-l-4   transition-all duration-300  ${
+                      _checkActiveTab(value)
+                        ? "bg-select-500 border-select-700"
+                        : ""
+                    } w-full`}
                   >
-                    <Image
-                      src={value.icon}
-                      width={30}
-                      height={30}
-                      alt="home-bg"
-                      className=" size-7 mr-4   "
-                    />
-                    {/* {value.icon} */}
-                    {value.label}
-                  </Link>
-                </div>
-              </li>
-            );
-          })}
-        </div>
+                    <Link
+                      href={`/${value.key}`}
+                      className={`flex transition-all  items-center  hover:font-workSansSemiBold  hover:px-2  ${
+                        _checkActiveTab(value) ? "text-select-700" : ""
+                      }   duration-300 ${
+                        pathname === value.key
+                          ? "text-dark-900 font-workSansSemiBold"
+                          : "  font-workSansMedium text-dark-900"
+                      }`}
+                    >
+                      <Image
+                        src={value.icon}
+                        width={30}
+                        height={30}
+                        alt="home-bg"
+                        className=" size-7 mr-4   "
+                      />
+                      {/* {value.icon} */}
+                      {value.label}
+                    </Link>
+                  </div>
+                </li>
+              );
+            })}
+          </div>
+        )}
         <div className=" border-b border-black border-opacity-10">
           <p className="px-[10px] pl-5 mt-4 font-workSansSemiBold text-md  text-gray-600 ">
             Công cụ

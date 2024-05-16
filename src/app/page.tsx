@@ -1,5 +1,4 @@
 "use client";
-import { IconVn } from "@/assets/icon";
 import AppContent from "@/components/App";
 import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
@@ -58,9 +57,20 @@ const Home: NextPage<any> = () => {
               <InformationCircleIcon className="w-6 h-6  text-[#06798F]" />
               Chúng Tôi Liên Tục Tuyển Cộng Tác Viên - Hỗ Trợ Đấu API Sản Phẩm
               cho cộng tác viên miễn phí - Chúc Các Bạn Một Ngày Tuyệt Vời -
-              Chúng Tôi Không Ngừng Lỗ Lực Đem Lại Trải Nghiệm Tốt Nhất Cho
+              Chúng Tôi Không Ngừng Nỗ Lực Đem Lại Trải Nghiệm Tốt Nhất Cho
               Người Dùng
             </p>
+          </div>
+
+          <div className="flex relative items-center  mb-2 w-full  ">
+            <input
+              type="text"
+              className="w-[100%] text-sm  border-transparent focus:border-transparent focus:ring-0  shadow-xl h-14 rounded-md px-2"
+              placeholder="Nhập từ khóa tìm kiếm"
+            />
+            <div className=" absolute right-6  h-8 rounded-md  flex items-center   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50]  ">
+              <span className="  text-white p-4 "> Tìm kiếm</span>
+            </div>
           </div>
 
           <div className="  grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-8 text-white leading-6  ">

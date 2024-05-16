@@ -4,8 +4,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, useState } from "react";
 import * as yup from "yup";
-import AQInput from "../Form/Input";
-import AQForm from "../Form";
+import BMInput from "../BMForm/BMInput";
+import AQForm from "../BMForm";
 import Spinner from "../Spinner";
 
 const changePasswordValidationSchema = yup.object({
@@ -102,7 +102,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                   validationSchemaParams={changePasswordValidationSchema}
                   onSubmit={onSubmit}
                 >
-                  <AQInput
+                  <BMInput
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     name="currentPassword"
                     labelText="Tên Sản phẩm"
@@ -111,7 +111,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     type="password"
                     disabled={true}
                   />
-                  <AQInput
+                  <BMInput
                     name="newPassword"
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     labelText="Số lượng cần mua:"
@@ -120,7 +120,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     // type="password"
                     disabled={isLoading}
                   />
-                  <AQInput
+                  <BMInput
                     name="confirmPassword"
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     labelText="Mã giảm giá (nếu có)"

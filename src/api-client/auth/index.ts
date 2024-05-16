@@ -24,16 +24,12 @@ class ApiAuth extends ApiClientBase {
    * sign up
    */
   public async signUp(params: RegisterParamsType): Promise<any> {
-    const res = await this.instance.post(
-      "/api/app/account-extend/register",
-      params,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return res.data;
+    const res = await this.instance.post("/api/auth/register", params, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res;
   }
 
   /**
@@ -83,26 +79,21 @@ class ApiAuth extends ApiClientBase {
     return res.data;
   }
 
-  public async getUserInfo(access_token: string): Promise<LoginResponseType> {
-    const res = await this.instance.get("/api/auth/get-user-info", {
-      headers: {
-        Authorization: "Bearer " + access_token,
-      },
-    });
-    return res.data;
-  }
-
   public async getAccountExtendDetails(
     access_token: string
   ): Promise<AccountDetailResponse> {
-    const res = await this.instance.get(
-      "/api/app/account-extend/account-detail",
+    console.log("access_tokenaccess_token", access_token);
+    const res = await this.instance.post(
+      "/api/auth/get-user-info",
+      {},
       {
         headers: {
           Authorization: "Bearer " + access_token,
         },
       }
     );
+
+    console.log("resresres", res);
     return res.data;
   }
 

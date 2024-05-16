@@ -2,14 +2,14 @@ import useYupValidationResolver from "@/hooks/useYupValidationResolver";
 import React, { FC, useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-interface AQFormTypes {
+interface BMFormTypes {
   defaultValues: any;
   children: any;
   onSubmit: SubmitHandler<any>;
   validationSchemaParams?: any;
 }
 
-const AQForm: FC<AQFormTypes> = ({
+const BMForm: FC<BMFormTypes> = ({
   defaultValues,
   children,
   onSubmit,
@@ -41,4 +41,4 @@ const AQForm: FC<AQFormTypes> = ({
   );
 };
 
-export default AQForm;
+export default BMForm;

@@ -10,6 +10,7 @@ import { useContext } from "react";
 const Profile: NextPage<any> = () => {
   const { handleLogOut, authState, accountExtendDetail, canCancel } =
     useContext(AuthContext);
+
   const router = useRouter();
   return (
     <AppLayout>
@@ -54,7 +55,7 @@ const Profile: NextPage<any> = () => {
               <p className=" font-workSansMedium text-lg">Tên đăng nhập</p>
               <input
                 className="w-[50%] border h-12 rounded-md px-2"
-                placeholder="admin"
+                placeholder={accountExtendDetail?.username}
               ></input>
             </div>
 
@@ -62,7 +63,7 @@ const Profile: NextPage<any> = () => {
               <p className=" font-workSansMedium text-lg">Số điện thoại</p>
               <input
                 className="w-[50%] border h-12 rounded-md px-2"
-                placeholder="0815501996"
+                placeholder={accountExtendDetail?.phone_number}
               ></input>
             </div>
 
@@ -70,7 +71,7 @@ const Profile: NextPage<any> = () => {
               <p className=" font-workSansMedium text-lg">Email</p>
               <input
                 className="w-[50%] border h-12 rounded-md px-2"
-                placeholder="admin@gmail.com"
+                placeholder={accountExtendDetail?.email}
               ></input>
             </div>
 

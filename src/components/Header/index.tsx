@@ -8,6 +8,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useRouter, usePathname } from "next/navigation";
 import React, { FC, useContext, useEffect, useRef, useState } from "react";
+import Avatar from "../Avatar";
 
 interface IHeader {
   title?: string;
@@ -93,7 +94,6 @@ const Header: FC<IHeader> = ({ title }) => {
     },
   ];
 
- 
   return (
     <div className="flex justify-between  items-center w-full">
       <div>
@@ -203,13 +203,7 @@ const Header: FC<IHeader> = ({ title }) => {
           <MagnifyingGlassIcon className="w-5 h-5 text-white hidden max-lg:block" />
         </button> */}
         {authState ? (
-          <div className="flex">
-            <div className="  max-lg:mx-0">
-              <button className="py-2 px-4  border  text-sm  font-workSansSemiBold border-[#00e3b4]   ">
-                Đã login
-              </button>
-            </div>
-          </div>
+          <Avatar isShowRole />
         ) : (
           <div className="flex">
             <div className="  max-lg:mx-0">
