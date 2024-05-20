@@ -1,11 +1,16 @@
-"use client";
 import AppContent from "@/components/App";
 import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { NextPage } from "next";
 import Image from "next/image";
-
+import type { Metadata } from "next";
+export const metadata: Metadata = {
+  title:
+    "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
+  description:
+    "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
+};
 const Home: NextPage<any> = () => {
   const lstTop = [
     {
@@ -48,7 +53,7 @@ const Home: NextPage<any> = () => {
   return (
     <AppLayout>
       <div className="w-full flex flex-col">
-        <div className="p-6   ">
+        <div className="p-2  ">
           <Header />
           <div className="h-[1px] bg-black  bg-opacity-20 my-4 max-lg:hidden" />
 
@@ -60,17 +65,6 @@ const Home: NextPage<any> = () => {
               Chúng Tôi Không Ngừng Nỗ Lực Đem Lại Trải Nghiệm Tốt Nhất Cho
               Người Dùng
             </p>
-          </div>
-
-          <div className="flex relative items-center  mb-2 w-full  ">
-            <input
-              type="text"
-              className="w-[100%] text-sm  border-transparent focus:border-transparent focus:ring-0  shadow-xl h-14 rounded-md px-2"
-              placeholder="Nhập từ khóa tìm kiếm"
-            />
-            <div className=" absolute right-6  h-8 rounded-md  flex items-center   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50]  ">
-              <span className="  text-white p-4 "> Tìm kiếm</span>
-            </div>
           </div>
 
           <div className="  grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-8 text-white leading-6  ">
@@ -92,6 +86,17 @@ const Home: NextPage<any> = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="flex relative items-center  mt-4 w-full  ">
+            <input
+              type="text"
+              className="w-[100%] text-sm  border-transparent focus:border-transparent focus:ring-0  shadow-xl h-14 rounded-md px-2"
+              placeholder="Nhập từ khóa tìm kiếm"
+            />
+            <div className=" absolute right-6  h-8 rounded-md  flex items-center   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50]  ">
+              <span className="  text-white p-4 "> Tìm kiếm</span>
+            </div>
           </div>
         </div>
         <AppContent />

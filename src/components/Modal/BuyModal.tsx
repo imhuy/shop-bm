@@ -1,5 +1,5 @@
 // import passwordRegex from "@/utils/regex";
-import { passwordRegex } from "@/utils/regex";
+import { numberRegex, passwordRegex } from "@/utils/regex";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FC, Fragment, useState } from "react";
@@ -9,30 +9,10 @@ import AQForm from "../BMForm";
 import Spinner from "../Spinner";
 
 const changePasswordValidationSchema = yup.object({
-  currentPassword: yup
+  currentNumber: yup
     .string()
-    .required("Current password is required")
-    .matches(
-      passwordRegex,
-      "Current passwords must have at least one non alphanumeric character., Passwords must have at least one digit ('0'-'9')., Passwords must have at least one uppercase ('A'-'Z')."
-    ),
-  newPassword: yup
-    .string()
-    .required("New password is required")
-    .matches(
-      passwordRegex,
-      "New passwords must have at least one non alphanumeric character., Passwords must have at least one digit ('0'-'9')., Passwords must have at least one uppercase ('A'-'Z')."
-    )
-    .notOneOf(
-      [yup.ref("currentPassword")],
-      "New passwords must be different with current password"
-    ),
-  confirmPassword: yup
-    .string()
-    .oneOf(
-      [yup.ref("newPassword")],
-      "Confirm passwords not match with new passwords"
-    ),
+    .required("Vui lòng nhập số lượng cần mua")
+    .matches(numberRegex, "Số lượng cần mua phải là số."),
 });
 
 interface IChangePasswordModal {
@@ -91,11 +71,6 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     </button>
                   </div>
                 </Dialog.Title>
-                <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    {/* Please enter your old password and your new password. */}
-                  </p>
-                </div>
 
                 <AQForm
                   defaultValues={{}}
@@ -103,8 +78,8 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                   onSubmit={onSubmit}
                 >
                   <BMInput
-                    className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
-                    name="currentPassword"
+                    className="bg-white w-full   !text-black rounded-md border border-gray-300 sm:text-sm"
+                    name="currentName"
                     labelText="Tên Sản phẩm"
                     placeholder="Via Việt XMDT mới về"
                     containerClassName="mt-5"
@@ -112,7 +87,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     disabled={true}
                   />
                   <BMInput
-                    name="newPassword"
+                    name="currentNumber"
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     labelText="Số lượng cần mua:"
                     placeholder="Nhập số lượng cần mua"
@@ -121,7 +96,7 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     disabled={isLoading}
                   />
                   <BMInput
-                    name="confirmPassword"
+                    name="discountCode"
                     className="bg-white w-full rounded-md border border-gray-300 sm:text-sm"
                     labelText="Mã giảm giá (nếu có)"
                     placeholder="Mã giảm giá"
@@ -144,21 +119,16 @@ const BuyModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     </div>
                   </div>
 
-                  <div className="mt-4 flex justify-end">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center items-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                      disabled={isLoading}
-                    >
-                      {isLoading ? <Spinner /> : <p>No</p>}
-                    </button>
+                  <div className="mt-4 flex  justify-between items-end">
+                    <span className="text-sm text-red-500">
+                      Số dư không đủ, Vui lòng nạp thêm
+                    </span>
 
                     <button
                       type="submit"
                       className="inline-flex ml-3 justify-center items-center rounded-md border border-transparent bg-success-500 hover:bg-success-600 px-4 py-2 text-sm font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       disabled={isLoading}
-                      onClick={closeModal}
+                      // onClick={closeModal}
                     >
                       {isLoading ? <Spinner /> : <p>Thanh Toán</p>}
                     </button>

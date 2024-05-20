@@ -19,11 +19,11 @@ const Avatar: FC<Props> = ({ isShowRole = false }) => {
     >
       <div className="flex ">
         <div className="flex  w-full   gap-2 ">
-          <div className="flex border border-red-500  bg-white rounded-full p-2">
-            <Image src={AvatarIcon} className=" size-10" alt="avatar"></Image>
+          <div className="flex border border-red-500 size-11 items-center justify-center bg-white rounded-full  ">
+            <Image src={AvatarIcon} className=" size-7" alt="avatar"></Image>
           </div>
 
-          <div className="flex flex-col justify-center items-start  ml-1   gap-y-1 ">
+          <div className="flex flex-col justify-center items-start  ml-1  ">
             <div className="flex">
               <span className=" font-workSansSemiBold">
                 {accountExtendDetail?.full_name}
@@ -36,7 +36,7 @@ const Avatar: FC<Props> = ({ isShowRole = false }) => {
                   className=" size-4"
                   alt="avatar"
                 ></Image>
-                <span>500000đ</span>
+                <span>0đ</span>
                 <span>-</span>
                 <span className=" text-red-500">0%</span>
               </div>

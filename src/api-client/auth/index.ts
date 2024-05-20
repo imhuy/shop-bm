@@ -83,9 +83,8 @@ class ApiAuth extends ApiClientBase {
     access_token: string
   ): Promise<AccountDetailResponse> {
     console.log("access_tokenaccess_token", access_token);
-    const res = await this.instance.post(
+    const res = await this.instance.get(
       "/api/auth/get-user-info",
-      {},
       {
         headers: {
           Authorization: "Bearer " + access_token,

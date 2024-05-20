@@ -41,16 +41,17 @@ const Login: NextPage<any> = () => {
       let resR = await authApi.signUp({
         username: data.username,
         password: data.password,
-        password_again: data.password,
+        password_again: data.repassword,
         email: data.email,
         phone_number: data.phone,
       });
 
-      if (resR.code == 0) {
+      if (resR.code == 999) {
         toast.error(resR.message, { autoClose: 4000 });
         setIsLoading(false);
         return;
       }
+      toast.success(resR.message, { autoClose: 4000 });
       let res = await authApi.login({
         username: data.username,
         password: data.password,

@@ -27,7 +27,7 @@ interface ItemType {
 }
 
 const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
-  const [isOpenChangePassword, setIsOpenChangePassword] = useState(false);
+  const [isOpenBuyModal, setIsOpenBuyModal] = useState(false);
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [listMenu, setListMenu] = useState<ItemType[]>([
     {
@@ -89,7 +89,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
 
   const FooterMenu = () => {
     return (
-      <div className="flex font-workSansMedium  flex-col bg-white justify-center mt-10 mb-5 rounded-md shadow-xls w-full">
+      <div className="flex font-workSansMedium  flex-col bg-white justify-center mt-10 mb-5 rounded-md shadow-xl w-full">
         <div className="flex   max-sm:flex-col max-md:flex-col   justify-center   gap-y-5   w-[94%] px-2  border-b-2  pb-5    mt-5">
           <div className="flex flex-col max-sm:border-b-2 pb-2   min-w-[40%]">
             <h5 className=" font-workSansSemiBold   ml-1 text-xl">
@@ -312,7 +312,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
                   <div className="py-2 flex justify-center mb-4 ">
                     <button
                       className="w-[85%]"
-                      onClick={() => setIsOpenChangePassword(true)}
+                      onClick={() => setIsOpenBuyModal(true)}
                     >
                       <p className=" bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                         MUA NGAY
@@ -414,7 +414,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
                   <div className="py-2 flex justify-center mb-4 ">
                     <button
                       className="w-[85%]"
-                      onClick={() => setIsOpenChangePassword(true)}
+                      onClick={() => setIsOpenBuyModal(true)}
                     >
                       <p className=" bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                         MUA NGAY
@@ -516,7 +516,7 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
                   <div className="py-2 flex justify-center mb-4 ">
                     <button
                       className="w-[85%]"
-                      onClick={() => setIsOpenChangePassword(true)}
+                      onClick={() => setIsOpenBuyModal(true)}
                     >
                       <p className=" bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	">
                         MUA NGAY
@@ -535,8 +535,8 @@ const AppContent: FC<AppContentTypes> = ({ listItemsProps, tab }) => {
       </div>
 
       <BuyModal
-        isOpen={isOpenChangePassword}
-        closeModal={() => setIsOpenChangePassword(false)}
+        isOpen={isOpenBuyModal}
+        closeModal={() => setIsOpenBuyModal(false)}
       />
       <InfoModal isOpen={isOpenInfo} closeModal={() => setIsOpenInfo(false)} />
     </div>
