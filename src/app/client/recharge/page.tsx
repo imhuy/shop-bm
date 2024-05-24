@@ -1,15 +1,20 @@
 "use client";
+import ApiPayment from "@/api-client/payment";
 import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
 import CopyModal from "@/components/Modal/CopyModal";
+import { AuthContext } from "@/context/useAuthContext";
 import convertNumbThousand from "@/utils/convertNumbThousand";
 import { ClipboardIcon } from "@heroicons/react/24/solid";
+import { useQuery } from "@tanstack/react-query";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Rechange: NextPage<any> = () => {
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [title, setTitle] = useState("");
+  const { authState, accountExtendDetail } = useContext(AuthContext);
+  const [isShowPayment, setIsShowPayment] = useState(true);
   const [listOrder, setListMenu] = useState<any[]>([
     {
       tradingCode: "TSKW1683822924",
@@ -43,11 +48,27 @@ const Rechange: NextPage<any> = () => {
       pay: 1000,
     },
   ]);
-
+  const apiPayment = new ApiPayment();
   const handleCopy = (title: string) => {
     setIsOpenInfo(true);
     setTitle(title);
   };
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ["getPayment", authState?.access_token],
+    queryFn: async () =>
+      await apiPayment.checkMoney(authState?.access_token ?? ""),
+
+    refetchInterval: 7000,
+    // refetchInterval: 5000,
+    // refetchOnWindowFocus: true,
+  });
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: ";
+
+  console.log("datadatadatadatadata", isPending, data, error);
   return (
     <AppLayout>
       <div className="w-full flex flex-col">
@@ -89,7 +110,7 @@ const Rechange: NextPage<any> = () => {
               </span>
 
               <span className=" font-workSansSemiBold     rounded-md p-2 ">
-                <a href="">USDT</a>
+                <p>USDT</p>
               </span>
             </div>
 
@@ -131,7 +152,9 @@ const Rechange: NextPage<any> = () => {
                 <div className="flex  justify-between  text-sm bg-slate-100 rounded-md p-3 ">
                   <p className=" w-2/5 font-workSansMedium ">Nội dung</p>
                   <p className="w-2/5  font-workSansMedium text-red-500 ">
-                    VIA90211893
+                    {accountExtendDetail?.payment_content
+                      ? accountExtendDetail?.payment_content
+                      : "PAY"}
                   </p>
                   <button
                     onClick={() => handleCopy("nội dung chuyển tiền")}
@@ -139,6 +162,27 @@ const Rechange: NextPage<any> = () => {
                   >
                     <ClipboardIcon className="h-4 w-4" /> Copy
                   </button>
+                </div>
+
+                <div className="flex  justify-center text-sm bg-slate-100 rounded-md p-3 ">
+                  {isShowPayment ? (
+                    <button
+                      onClick={() => setIsShowPayment(false)}
+                      className=" font-workSansMedium flex flex-row  h-12 justify-around  items-center bg-blue-500 text-white rounded-md px-3 py-1 "
+                    >
+                      Đã chuyển khoản
+                    </button>
+                  ) : (
+                    <div className="  bg-[#CEF4FC] rounded-md ">
+                      <p className="flex  flex-row my-4  p-5 max-lg:p-1 text-[15px] text-[#06798F] font-workSansMedium text-center">
+                        {/* <InformationCircleIcon className="w-6 h-6  text-[#06798F]" /> */}
+                        Chúng Tôi đã nhận được thông tin chuyển khoản của bạn,
+                        tiền sẽ được cộng vào tài khoản của bạn trong thời gian
+                        1-5 phút.Xin chân thành cảm ơn bạn đã sử dụng dịch vụ
+                        của chúng tôi !
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
               <div>
@@ -149,7 +193,13 @@ const Rechange: NextPage<any> = () => {
                   Mở App Ngân hàng quét mã QRCode và nhập số tiền cần chuyển
                 </div>
                 <div className=" flex justify-center">
-                  <img src="/images/bank.png" alt="bank" className="w-1/2" />
+                  {accountExtendDetail?.payment_content && (
+                    <img
+                      src={`https://api.vietqr.io/image/970407-9804208888-JLWd1gE.jpg?accountName=LUU%20VAN%20HUY&addInfo=${accountExtendDetail?.payment_content}`}
+                      alt="bank"
+                      className="w-2/3"
+                    />
+                  )}
                 </div>
               </div>
             </div>

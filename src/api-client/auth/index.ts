@@ -1,10 +1,5 @@
 import ApiClientBase from "../ApiClientBase";
-import {
-  AccountDetailResponse,
-  LoginParamsType,
-  LoginResponseType,
-  RegisterParamsType,
-} from "../types/AuthType";
+import { AccountDetailResponse, LoginParamsType, LoginResponseType, RegisterParamsType } from "../types/AuthType";
 
 class ApiAuth extends ApiClientBase {
   constructor() {
@@ -15,9 +10,9 @@ class ApiAuth extends ApiClientBase {
   /**
    * Login
    */
-  public async login(params: LoginParamsType): Promise<LoginResponseType> {
+  public async login(params: LoginParamsType): Promise<LoginResponseType | any> {
     const res = await this.instance.post("/api/auth/login", params);
-    return res.data;
+    return res;
   }
 
   /**
@@ -79,28 +74,16 @@ class ApiAuth extends ApiClientBase {
     return res.data;
   }
 
-  public async getAccountExtendDetails(
-    access_token: string
-  ): Promise<AccountDetailResponse> {
-    console.log("access_tokenaccess_token", access_token);
-    const res = await this.instance.get(
-      "/api/auth/get-user-info",
-      {
-        headers: {
-          Authorization: "Bearer " + access_token,
-        },
-      }
-    );
-
-    console.log("resresres", res);
+  public async getAccountExtendDetails(access_token: string): Promise<AccountDetailResponse> {
+    const res = await this.instance.get("/api/auth/get-user-info", {
+      headers: {
+        Authorization: "Bearer " + access_token,
+      },
+    });
     return res.data;
   }
 
-  public async changePassword(
-    access_token: string,
-    currentPassword: string,
-    newPassword: string
-  ): Promise<any> {
+  public async changePassword(access_token: string, currentPassword: string, newPassword: string): Promise<any> {
     const res = await this.instance.post(
       `/api/app/account-extend/change-password?currentPassword=${currentPassword}&newPassword=${newPassword}`,
       {},
@@ -114,10 +97,7 @@ class ApiAuth extends ApiClientBase {
   }
 
   public async resetPassword(email: string): Promise<any> {
-    const res = await this.instance.post(
-      `/api/app/account-extend/reset-password?email=${email}`,
-      {}
-    );
+    const res = await this.instance.post(`/api/app/account-extend/reset-password?email=${email}`, {});
     return res.data;
   }
 

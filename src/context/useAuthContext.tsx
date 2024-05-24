@@ -14,11 +14,9 @@ export enum TypePayment {
 export interface IAuthContext {
   authState?: any | null;
   accountExtendDetail?: AccountDetailResponse | null;
-  canCancel?: boolean | null;
   handleLogged: (authState?: LoginResponseType) => void;
   handleLogOut: () => void;
   getAccountExtendDetails: () => Promise<void>;
-  getCanCancel: () => Promise<void>;
   typePayment?: TypePayment;
   setTypePaymentAction?: (type: TypePayment) => void;
 }
@@ -29,8 +27,6 @@ export const AuthContext = React.createContext<IAuthContext>({
   handleLogged: (authState?: LoginResponseType) => {},
   handleLogOut: () => {},
   getAccountExtendDetails: async () => {},
-  canCancel: false,
-  getCanCancel: async () => {},
 });
 
 export const useAuthContext = (): IAuthContext => {
@@ -49,10 +45,8 @@ export const useAuthContext = (): IAuthContext => {
   }, []);
 
   useEffect(() => {
-    console.log("authStateauthStatexxxx", authState?.access_token);
     if (authState?.access_token) {
       getAccountExtendDetails();
-      getCanCancel();
     } else {
       //   mixpanelSetUserId("guess");
     }
@@ -74,18 +68,6 @@ export const useAuthContext = (): IAuthContext => {
     }, 1000 * 60);
     return () => clearInterval(expireInterval);
   });
-
-  const getCanCancel = async () => {
-    try {
-      const canCancelRes = await apiAuth.canCancel(
-        authState?.access_token ?? ""
-      );
-      setCanCancel(canCancelRes);
-      return;
-    } catch (error) {
-      return;
-    }
-  };
 
   const getAccountExtendDetails = async () => {
     try {
@@ -118,8 +100,6 @@ export const useAuthContext = (): IAuthContext => {
     handleLogged,
     handleLogOut,
     getAccountExtendDetails,
-    canCancel: canCancel,
-    getCanCancel,
     typePayment,
     setTypePaymentAction,
   };

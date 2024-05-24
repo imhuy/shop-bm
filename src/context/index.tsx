@@ -12,8 +12,6 @@ const ContextConsumer: FC<IContextConsumer> = ({ children }) => {
     handleLogOut,
     handleLogged,
     getAccountExtendDetails,
-    canCancel,
-    getCanCancel,
     typePayment,
     setTypePaymentAction,
   } = useAuthContext();
@@ -26,8 +24,6 @@ const ContextConsumer: FC<IContextConsumer> = ({ children }) => {
         handleLogOut,
         handleLogged,
         getAccountExtendDetails,
-        canCancel,
-        getCanCancel,
         typePayment,
         setTypePaymentAction,
       }}

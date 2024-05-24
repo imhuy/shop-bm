@@ -74,6 +74,7 @@ const Home: NextPage<any> = () => {
                 className={`flex  ${item.className}    items-center p-6 rounded-lg`}
               >
                 <Image
+                  priority={true}
                   src={item.image}
                   width={80}
                   height={80}

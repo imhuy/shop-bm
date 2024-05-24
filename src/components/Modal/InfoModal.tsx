@@ -27,7 +27,7 @@ const InfoModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <div className="flex min-h-full  items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -37,7 +37,7 @@ const InfoModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl rounded-sm transform overflow-hidden rounded-ms bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-xl   rounded-sm transform overflow-hidden rounded-ms bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title
                   as="h3"
                   className="text-2xl font-workSansBold leading-6 text-success-500"
@@ -52,7 +52,7 @@ const InfoModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     </button>
                   </div>
                 </Dialog.Title>
-                <div className="mt-8 flex flex-col gap-y-6">
+                <div className="mt-8    max-h-[60vh]   overflow-auto flex flex-col gap-y-6">
                   <p className=" text-base">
                     BM350 KHÁNG VNĐ + 7( TẠO 10-12 THÁNG)
                   </p>
@@ -76,6 +76,38 @@ const InfoModal: FC<IChangePasswordModal> = ({ isOpen, closeModal }) => {
                     Warranty for 24 hours (link error, die bm when not in use,
                     lower spending limit), The following 4 accounts create the
                     desired currency time zone
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
+                  </p>
+                  <p className=" text-base">
+                    No warranty in case of adding a card, creating an ad
+                    account.
                   </p>
                   <p className=" text-base">
                     No warranty in case of adding a card, creating an ad

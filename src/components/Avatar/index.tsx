@@ -1,6 +1,7 @@
 "use client";
 import { AvatarIcon, DollarIcon } from "@/assets/icon";
 import { AuthContext } from "@/context/useAuthContext";
+import convertNumbThousand from "@/utils/convertNumbThousand";
 
 import Image from "next/image";
 import { FC, useContext } from "react";
@@ -36,7 +37,10 @@ const Avatar: FC<Props> = ({ isShowRole = false }) => {
                   className=" size-4"
                   alt="avatar"
                 ></Image>
-                <span>0đ</span>
+                <span>
+                  {" "}
+                  {convertNumbThousand(accountExtendDetail?.balance)}
+                </span>
                 <span>-</span>
                 <span className=" text-red-500">0%</span>
               </div>

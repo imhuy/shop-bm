@@ -133,9 +133,6 @@ const SideMenu = () => {
     },
   ]);
 
-  useEffect(() => {
-    console.log("authStateauthStatexx222", authState);
-  });
   const _checkActiveTab = (item: MenuItemType, index?: number) => {
     if (`${pathname}` === `/${item.key}`) return true;
     return false;
@@ -255,7 +252,7 @@ const SideMenu = () => {
           </p>
           {listMenu3.map((value, index) => {
             return (
-              <li className="mt-1  text-[15px] " key={value.key}>
+              <li className="mt-1  text-[15px] " key={index}>
                 <div
                   className={`p-[10px] pl-5    border-l-4   transition-all duration-300  ${
                     _checkActiveTab(value)
@@ -264,7 +261,7 @@ const SideMenu = () => {
                   } w-full`}
                 >
                   <Link
-                    href={`/${value.key}`}
+                    href={`${value.key}`}
                     className={`flex transition-all  items-center  hover:font-workSansSemiBold  hover:px-2  ${
                       _checkActiveTab(value) ? "text-select-700" : ""
                     }   duration-300 ${

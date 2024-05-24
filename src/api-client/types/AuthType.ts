@@ -1,9 +1,11 @@
+import { BaseResponse } from "./BaseResponse";
+
 export interface LoginParamsType {
   username: string;
   password: string;
 }
 
-export interface LoginResponseType {
+export interface LoginResponseType extends BaseResponse {
   access_token: string;
 }
 
@@ -18,6 +20,8 @@ export interface AccountDetailResponse {
   email: string;
   login_type: string;
   status: number;
+  balance: number;
+  payment_content: string;
 }
 
 export interface RegisterParamsType {
