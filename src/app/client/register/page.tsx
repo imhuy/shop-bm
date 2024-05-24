@@ -52,12 +52,12 @@ const Login: NextPage<any> = () => {
         return;
       }
       toast.success(resR.message, { autoClose: 4000 });
-      let res = await authApi.login({
+      let resLogin = await authApi.login({
         username: data.username,
         password: data.password,
       });
       router.push("/client/profile");
-      handleLogged(res);
+      handleLogged(resLogin.data);
       setIsLoading(false);
     } catch (error: any) {
       toast.error(`${error?.response?.data?.error_description ?? error?.message}`, {});
