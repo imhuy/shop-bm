@@ -21,15 +21,24 @@ const Profile: NextPage<any> = () => {
         <div className='w-full flex flex-col items-center  gap-y-6'>
           <div className='mt-4  w-[95%] flex flex-wrap justify-between '>
             <div className='w-[30%] py-10 flex flex-col items-center   bg-white   border shadow-md rounded-md '>
-              <p className=' font-workSansSemiBold text-2xl text-primary-500'>{convertNumbThousand(500000)}</p>
+              <p className=' font-workSansSemiBold text-2xl text-primary-500'>
+                {convertNumbThousand(accountExtendDetail?.total_amount)}
+              </p>
               <p className=' font-workSansMedium text-lg mt-1'>Tổng Tiền Nạp</p>
             </div>
             <div className='w-[30%] py-10 flex flex-col items-center bg-white     border shadow-md rounded-md '>
-              <p className=' font-workSansSemiBold text-2xl text-green-600'>{convertNumbThousand(500000)}</p>
+              {accountExtendDetail?.total_amount && accountExtendDetail?.amount && (
+                <p className=' font-workSansSemiBold text-2xl text-green-600'>
+                  {convertNumbThousand(accountExtendDetail?.total_amount - accountExtendDetail?.amount)}
+                </p>
+              )}
               <p className=' font-workSansMedium text-lg mt-1'>Đã Sử Dụng</p>
             </div>
             <div className='w-[30%] py-10 flex flex-col items-center bg-white     border shadow-md rounded-md '>
-              <p className=' font-workSansSemiBold text-2xl text-blue-500'>{convertNumbThousand(500000)}</p>
+              <p className=' font-workSansSemiBold text-2xl text-blue-500'>
+                {convertNumbThousand(accountExtendDetail?.amount)}
+              </p>
+
               <p className=' font-workSansMedium text-lg mt-1'>Còn Lại</p>
             </div>
           </div>
@@ -37,7 +46,7 @@ const Profile: NextPage<any> = () => {
             <div className='border-b px-4 py-5 flex gap-x-4'>
               <span className=' font-workSansBold text-white  bg-blue-500 rounded-md p-2 '>Thông Tin Cá Nhân</span>
 
-              <span className=' font-workSansSemiBold     rounded-md p-2 '>
+              <span className=' font-workSansSemiBold  rounded-md p-2 '>
                 <a href='/client/change-password'>Đổi mật khẩu</a>
               </span>
             </div>

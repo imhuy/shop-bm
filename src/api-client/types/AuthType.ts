@@ -20,7 +20,8 @@ export interface AccountDetailResponse {
   email: string;
   login_type: string;
   status: number;
-  balance: number;
+  total_amount: number;
+  amount: number;
   payment_content: string;
 }
 

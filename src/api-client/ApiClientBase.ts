@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/utils/config";
+import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class ApiClientBase {
@@ -16,10 +17,7 @@ class ApiClientBase {
   }
 
   private initializeResponseInterceptor = () => {
-    this.instance.interceptors.response.use(
-      this.handleResponse,
-      this.handleError
-    );
+    this.instance.interceptors.response.use(this.handleResponse, this.handleError);
   };
 
   private handleResponse = (res: AxiosResponse) => {
@@ -41,11 +39,7 @@ class ApiClientBase {
     return response.data;
   }
 
-  public async post<T>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  public async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
     const response = await this.instance.post<T>(url, data, config);
     return response.data;
   }

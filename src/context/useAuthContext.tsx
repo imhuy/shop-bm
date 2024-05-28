@@ -1,8 +1,5 @@
-import { apiAuth } from "@/api-client";
-import {
-  AccountDetailResponse,
-  LoginResponseType,
-} from "@/api-client/types/AuthType";
+import { authApi } from "@/api-client";
+import { AccountDetailResponse, LoginResponseType } from "@/api-client/types/AuthType";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import React, { useEffect, useState } from "react";
 
@@ -30,9 +27,7 @@ export const AuthContext = React.createContext<IAuthContext>({
 });
 
 export const useAuthContext = (): IAuthContext => {
-  const [authState, setAuthState] = useState<
-    LoginResponseType | null | undefined
-  >(null);
+  const [authState, setAuthState] = useState<LoginResponseType | null | undefined>(null);
 
   const [accountExtendDetail, setAccountExtendDetail] = useState<any>(null);
   const [canCancel, setCanCancel] = useState<boolean | null | undefined>(null);
@@ -50,7 +45,6 @@ export const useAuthContext = (): IAuthContext => {
     } else {
       //   mixpanelSetUserId("guess");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState?.access_token]);
 
   useEffect(() => {
@@ -71,13 +65,11 @@ export const useAuthContext = (): IAuthContext => {
 
   const getAccountExtendDetails = async () => {
     try {
-      const accountData = await apiAuth.getAccountExtendDetails(
-        authState?.access_token ?? ""
-      );
+      const accountData = await authApi.getAccountExtendDetails(authState?.access_token ?? "");
       setAccountExtendDetail(accountData);
-
       return;
     } catch (error) {
+      handleLogOut();
       return;
     }
   };

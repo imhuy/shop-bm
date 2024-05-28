@@ -1,5 +1,5 @@
 "use client";
-import ApiAuth from "@/api-client/auth";
+import { authApi } from "@/api-client";
 import BMForm from "@/components/BMForm";
 import BMInput from "@/components/BMForm/BMInput";
 import Header from "@/components/Header";
@@ -23,7 +23,6 @@ const loginValidationSchema = yup.object({
 const Login: NextPage<any> = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { handleLogged, authState } = useContext(AuthContext);
-  const authApi = new ApiAuth();
 
   const router = useRouter();
 
