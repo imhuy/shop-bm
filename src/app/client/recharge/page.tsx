@@ -171,7 +171,7 @@ const Rechange: NextPage<any> = () => {
             <div className='scrollmenu  '>
               <table>
                 <thead>
-                  <tr className='flex gap-x-6 px-5 mb-5 mt-2 font-workSansBold'>
+                  <tr className='flex gap-x-6 px-5 mb-5 mt-2 font-workSansBold  '>
                     <th className=' w-2  text-start'>
                       <span className=' font-semibold text-sm'># </span>{" "}
                     </th>
@@ -198,7 +198,7 @@ const Rechange: NextPage<any> = () => {
                     {data?.map((item: any, i: number) => (
                       <tr
                         key={i}
-                        className={`flex  gap-x-6 py-5  px-5 border-b  w-screen   ${i % 2 == 0 ? "bg-slate-100" : ""}`}
+                        className={`flex  gap-x-6 py-5  px-5 border-b     ${i % 2 == 0 ? "bg-slate-100" : ""}`}
                       >
                         <td className=' text-start  w-2  '>
                           <span className='font-normal text-sm'>{i + 1} </span>

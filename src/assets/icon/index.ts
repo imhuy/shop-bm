@@ -5,4 +5,5 @@ import Ads from "./ads.png";
 import AvatarIcon from "./avatar.png";
 import DollarIcon from "./dollar.png";
 import LoginIcon from "./login.png";
-export { TickCircle, IconVn, IconUs, Ads, AvatarIcon, DollarIcon, LoginIcon };
+import UnCheckIcon from "./unCheck.svg";
+export { TickCircle, IconVn, IconUs, Ads, AvatarIcon, DollarIcon, LoginIcon, UnCheckIcon };

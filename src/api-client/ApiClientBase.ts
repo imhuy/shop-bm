@@ -1,5 +1,4 @@
 import { BASE_URL } from "@/utils/config";
-import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 class ApiClientBase {

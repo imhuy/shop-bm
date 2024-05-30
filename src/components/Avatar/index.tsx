@@ -27,7 +27,7 @@ const Avatar: FC<Props> = ({ isShowRole = false }) => {
             {!isShowRole ? (
               <div className='flex text-sm  font-workSansSemiBold  -ml-2  gap-x-2 px-2 h-5 bg-[#FFF1CC] justify-around items-center rounded-2xl'>
                 <Image src={DollarIcon} className=' size-4' alt='avatar'></Image>
-                <span> {convertNumbThousand(accountExtendDetail?.total_amount)}</span>
+                <span> {convertNumbThousand(accountExtendDetail?.amount)}</span>
                 <span>-</span>
                 <span className=' text-red-500'>0%</span>
               </div>

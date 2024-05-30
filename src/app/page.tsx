@@ -6,11 +6,10 @@ import { NextPage } from "next";
 import Image from "next/image";
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title:
-    "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
-  description:
-    "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
+  title: "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
+  description: "Mua BM kháng, Via Việt Cổ | Via XMDT, TKQC NLM  | Mua Fanpage Facebook",
 };
+
 const Home: NextPage<any> = () => {
   const lstTop = [
     {
@@ -52,51 +51,46 @@ const Home: NextPage<any> = () => {
   ];
   return (
     <AppLayout>
-      <div className="w-full flex flex-col">
-        <div className="p-2  ">
+      <div className='w-full flex flex-col'>
+        <div className='p-2  '>
           <Header />
-          <div className="h-[1px] bg-black  bg-opacity-20 my-4 max-lg:hidden" />
+          <div className='h-[1px] bg-black  bg-opacity-20 my-4 max-lg:hidden' />
 
-          <div className="  bg-[#CEF4FC] rounded-md ">
-            <p className="flex  flex-row my-4  p-5 max-lg:p-1 text-[15px] text-[#06798F] font-workSansMedium text-center">
-              <InformationCircleIcon className="w-6 h-6  text-[#06798F]" />
-              Chúng Tôi Liên Tục Tuyển Cộng Tác Viên - Hỗ Trợ Đấu API Sản Phẩm
-              cho cộng tác viên miễn phí - Chúc Các Bạn Một Ngày Tuyệt Vời -
-              Chúng Tôi Không Ngừng Nỗ Lực Đem Lại Trải Nghiệm Tốt Nhất Cho
-              Người Dùng
+          <div className='  bg-[#CEF4FC] rounded-md '>
+            <p className='flex  flex-row my-4  p-5 max-lg:p-1 text-[15px] text-[#06798F] font-workSansMedium text-center'>
+              <InformationCircleIcon className='w-6 h-6  text-[#06798F]' />
+              Chúng Tôi Liên Tục Tuyển Cộng Tác Viên - Hỗ Trợ Đấu API Sản Phẩm cho cộng tác viên miễn phí - Chúc Các Bạn
+              Một Ngày Tuyệt Vời - Chúng Tôi Không Ngừng Nỗ Lực Đem Lại Trải Nghiệm Tốt Nhất Cho Người Dùng
             </p>
           </div>
 
-          <div className="  grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-8 text-white leading-6  ">
+          <div className='  grid grid-cols-3 max-sm:grid-cols-1 max-md:grid-cols-2 gap-8 text-white leading-6  '>
             {lstTop.map((item, i) => (
-              <div
-                key={i}
-                className={`flex  ${item.className}    items-center p-6 rounded-lg`}
-              >
+              <div key={i} className={`flex  ${item.className}    items-center p-6 rounded-lg`}>
                 <Image
                   priority={true}
                   src={item.image}
                   width={80}
                   height={80}
-                  alt="home-bg"
-                  className="h-16 bg-white   rounded-md p-2 w-16 mr-2"
+                  alt='home-bg'
+                  className='h-16 bg-white   rounded-md p-2 w-16 mr-2'
                 />
-                <div className="p-2">
-                  <p className=" font-workSansSemiBold">{item.name}</p>
-                  <p className="text-sm">{item.description}</p>
+                <div className='p-2'>
+                  <p className=' font-workSansSemiBold'>{item.name}</p>
+                  <p className='text-sm'>{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="flex relative items-center  mt-4 w-full  ">
+          <div className='flex relative items-center  mt-4 w-full  '>
             <input
-              type="text"
-              className="w-[100%] text-sm  border-transparent focus:border-transparent focus:ring-0  shadow-xl h-14 rounded-md px-2"
-              placeholder="Nhập từ khóa tìm kiếm"
+              type='text'
+              className='w-[100%] text-sm  border-transparent focus:border-transparent focus:ring-0  shadow-xl h-14 rounded-md px-2'
+              placeholder='Nhập từ khóa tìm kiếm'
             />
-            <div className=" absolute right-6  h-8 rounded-md  flex items-center   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50]  ">
-              <span className="  text-white p-4 "> Tìm kiếm</span>
+            <div className=' absolute right-6  h-8 rounded-md  flex items-center   bg-gradient-to-r  from-[#FF5E6A] to-[#FF8C50]  '>
+              <span className='  text-white p-4 '> Tìm kiếm</span>
             </div>
           </div>
         </div>
