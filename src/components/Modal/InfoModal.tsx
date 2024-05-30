@@ -52,7 +52,7 @@ const InfoModal: FC<IBuyModal> = ({ isOpen, closeModal, data }) => {
                   </div>
                 </Dialog.Title>
                 <div className='mt-8    max-h-[60vh]   overflow-auto flex flex-col gap-y-6'>
-                  <p className=' text-base'>BM350 KHÁNG VNĐ + 7( TẠO 10-12 THÁNG)</p>
+                  <p className=' text-base'>{data.description_detail}</p>
                   <p className=' text-base'>
                     BM1 limit 250$ có một tài khoản quảng cáo, giới hạn 5 tài khoản trong BM sau khi chạy
                   </p>

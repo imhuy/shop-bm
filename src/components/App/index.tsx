@@ -29,6 +29,7 @@ export interface ItemType {
   price: number;
   categories_id: number;
   sold: number;
+  description_detail: string;
 }
 
 const AppContent: FC<AppContentTypes> = () => {
@@ -291,7 +292,7 @@ const AppContent: FC<AppContentTypes> = () => {
       {isOpenBuyModal && (
         <BuyModal data={dataBuy} isOpen={isOpenBuyModal} closeModal={() => setIsOpenBuyModal(false)} />
       )}
-      {isOpenBuyModal && <InfoModal data={dataBuy} isOpen={isOpenInfo} closeModal={() => setIsOpenInfo(false)} />}
+      {isOpenInfo && <InfoModal data={dataBuy} isOpen={isOpenInfo} closeModal={() => setIsOpenInfo(false)} />}
     </div>
   );
 };
