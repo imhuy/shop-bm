@@ -30,7 +30,7 @@ class ApiProduct extends ApiClientBase {
   }
 
   public async downloadProduct(access_token: string, productid: string): Promise<BaseResponse | any> {
-    const res = await this.instance.get(`/api/products/download?product_id=${productid}`, {
+    const res = await this.instance.get(`/api/products/download?transaction=${productid}`, {
       headers: {
         Authorization: "Bearer " + access_token,
       },

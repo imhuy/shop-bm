@@ -260,11 +260,9 @@ const AppContent: FC<AppContentTypes> = () => {
                         </strong>
                       </div>
                       <div className='     flex flex-col justify-center items-center'>
-                        <p className=' line-through text-gray-400'>
-                          {convertNumbThousand(item.price_original + item.price)}đ
-                        </p>
+                        <p className=' line-through text-gray-400'>{convertNumbThousand(item.price_original)}đ</p>
                         <p className=' text-lg font-workSansSemiBold text-primary-500'>
-                          {convertNumbThousand(item.price_original)}đ
+                          {convertNumbThousand(item.price)}đ
                         </p>
                       </div>
                     </div>

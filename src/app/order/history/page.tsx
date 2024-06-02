@@ -27,8 +27,6 @@ const History: NextPage<any> = () => {
     queryFn: async () => await productApi.buyHistory(authState?.access_token ?? ""),
   });
 
-  console.log("datadatadata", data);
-
   const donwloadProduct = useQuery({
     queryKey: ["downloadProduct", authState?.access_token],
     queryFn: async () => await productApi.downloadProduct(authState?.access_token ?? "", tracsactionId ?? ""),
@@ -36,19 +34,24 @@ const History: NextPage<any> = () => {
   });
 
   useEffect(() => {
-    donwloadProduct.refetch();
+    if (tracsactionId != "") {
+      (async () => {
+        let fetch = await donwloadProduct.refetch();
+        if (fetch.status == "success") {
+          let dataNewLine = `${fetch.data.join("\n")}\n`;
+          const blob = new Blob([dataNewLine], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.download = `bm2fa.com-${tracsactionId}.text`;
+          link.href = url;
+          link.click();
+        }
+      })();
+    }
   }, [tracsactionId]);
 
   const createTextFile = async (id: string) => {
     setTransactionId(id);
-    // let data = await donwloadProduct.data;
-    const fileData = JSON.stringify(id);
-    const blob = new Blob([fileData], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.download = `bm2fa.com-${id}.text`;
-    link.href = url;
-    link.click();
   };
 
   return (
@@ -134,7 +137,7 @@ const History: NextPage<any> = () => {
                         </td>
 
                         <td className='text-center font-normal text-sm w-40'>
-                          <span className=' font-normal text-sm  '>{convertNumbThousand(item?.amount)}đ</span>
+                          <span className=' font-normal text-sm  '>{convertNumbThousand(item?.total_amount)}đ</span>
                         </td>
                         <td className='text-center font-normal text-sm w-32'>
                           <span className=' font-normal text-sm  '>

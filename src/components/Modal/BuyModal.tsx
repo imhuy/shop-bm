@@ -5,13 +5,14 @@ import convertNumbThousand from "@/utils/convertNumbThousand";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useQuery } from "@tanstack/react-query";
-import { FC, Fragment, useContext, useState } from "react";
+import { FC, Fragment, useContext, useEffect, useState } from "react";
 import * as yup from "yup";
 import { ItemType } from "../App";
 import AQForm from "../BMForm";
 import BMInput from "../BMForm/BMInput";
 import Spinner from "../Spinner";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 const changePasswordValidationSchema = yup.object({
   currentNumber: yup.number().required("Vui lòng nhập số lượng cần mua"),
   // .matches(numberRegex, "Số lượng cần mua phải là số."),
@@ -27,35 +28,37 @@ const BuyModal: FC<IBuyModal> = ({ isOpen, closeModal, data }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [textError, setTextError] = useState<string>("");
   const [inputNumber, setInputNumber] = useState<number>(1);
-  const [totalAmount, setTotalAmount] = useState<number>(Number(data?.price_original));
+  const [totalAmount, setTotalAmount] = useState<number>(Number(data?.price));
 
   const { accountExtendDetail, authState } = useContext(AuthContext);
-
+  const router = useRouter();
   const buyProduct = useQuery({
     queryKey: ["buyProduct", authState?.access_token],
-    queryFn: async () => await productApi.buyProduct(authState?.access_token ?? "", 11, inputNumber),
+    queryFn: async () => await productApi.buyProduct(authState?.access_token ?? "", data.id, inputNumber),
     enabled: false,
   });
 
+  console.log("buyProductbuyProductbuyProduct", data.id);
   const onSubmit = async (e: any) => {
     setIsLoading(true);
     await buyProduct.refetch();
-    toast.success("Mua hàng thành công.", { autoClose: 4000 });
-    console.log("buyProductbuyProductbuyProduct", buyProduct.data);
 
-    // if (buyProduct.data?.code === 0) {
-    //   toast.success("Mua hàng thành công.", { autoClose: 4000 });
-    //   setTextError("Mua hàng thành công.");
-    //   closeModal();
-    // } else {
-    //   toast.error("Xảy ra lỗi khi mua sản phẩm.", { autoClose: 4000 });
-    //   setTextError("Xảy ra lỗi khi mua sản phẩm.");
-    // }
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
   };
 
+  useEffect(() => {
+    if (buyProduct?.data?.code === 999) {
+      toast.error(buyProduct?.data?.message, { autoClose: 4000 });
+      setIsLoading(false);
+    }
+    if (buyProduct?.data?.code === 0) {
+      toast.success(buyProduct?.data?.message, { autoClose: 4000 });
+      router.push("/order/history");
+      setIsLoading(false);
+    }
+  }, [buyProduct?.data?.code]);
   const onChangeNumberInput = (e: any) => {
     let inputNumber = Number(e.target.value);
     setInputNumber(inputNumber);
@@ -66,7 +69,7 @@ const BuyModal: FC<IBuyModal> = ({ isOpen, closeModal, data }) => {
       setTextError("");
     }
 
-    if (inputNumber * data.price_original > Number(accountExtendDetail?.amount)) {
+    if (inputNumber * data.price > Number(accountExtendDetail?.amount)) {
       setTextError("Số lượng cần mua lớn hơn số tiền bạn có.");
       return;
     }
@@ -74,7 +77,7 @@ const BuyModal: FC<IBuyModal> = ({ isOpen, closeModal, data }) => {
       setTextError("Số lượng cần mua lớn hơn số còn lại trong kho.");
       return;
     }
-    setTotalAmount(inputNumber * data.price_original);
+    setTotalAmount(inputNumber * data.price);
   };
 
   return (
