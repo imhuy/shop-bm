@@ -10,6 +10,7 @@ import { FacebookIcon } from "@/assets/images";
 import { useQuery } from "@tanstack/react-query";
 import { productApi } from "@/api-client";
 import { AuthContext } from "@/context/useAuthContext";
+import { useRouter } from "next/navigation";
 interface AppContentTypes {
   listItemsProps?: any[];
   totalCountProps?: string;
@@ -17,7 +18,7 @@ interface AppContentTypes {
 }
 
 export interface ItemType {
-  key: string;
+  id: number;
   name: string;
   type: number;
   icon?: JSX.Element;
@@ -30,6 +31,7 @@ export interface ItemType {
   categories_id: number;
   sold: number;
   description_detail: string;
+  price_original: number;
 }
 
 const AppContent: FC<AppContentTypes> = () => {
@@ -37,8 +39,14 @@ const AppContent: FC<AppContentTypes> = () => {
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [dataBuy, setDataBuy] = useState<ItemType>({} as ItemType);
   const { handleLogged, authState } = useContext(AuthContext);
+  const router = useRouter();
 
   const buyModal = (item: ItemType) => {
+    if (authState) {
+      console.log("not logined");
+    } else {
+      router.push("/client/login");
+    }
     setDataBuy(item);
     setIsOpenBuyModal(true);
   };
@@ -53,7 +61,6 @@ const AppContent: FC<AppContentTypes> = () => {
     queryFn: async () => await productApi.allProduct(authState?.access_token ?? ""),
   });
 
-  console.log("datadatadatadata", data);
   const IconCountry = (country: string) => {
     switch (country) {
       case "VN":
@@ -253,15 +260,17 @@ const AppContent: FC<AppContentTypes> = () => {
                         </strong>
                       </div>
                       <div className='     flex flex-col justify-center items-center'>
-                        <p className=' line-through text-gray-400'>{convertNumbThousand(item.price)}đ</p>
+                        <p className=' line-through text-gray-400'>
+                          {convertNumbThousand(item.price_original + item.price)}đ
+                        </p>
                         <p className=' text-lg font-workSansSemiBold text-primary-500'>
-                          {convertNumbThousand(item.price)}đ
+                          {convertNumbThousand(item.price_original)}đ
                         </p>
                       </div>
                     </div>
 
                     <div className='py-2 flex justify-center mt-2'>
-                      <button className='w-[85%]' onClick={() => infoModal(item)}>
+                      <button className='w-[95%]' onClick={() => infoModal(item)}>
                         <p className='border   px-8 py-1 border-slate-400 rounded-md flex items-center justify-center	'>
                           Thông tin chi tiết
                         </p>
@@ -269,7 +278,7 @@ const AppContent: FC<AppContentTypes> = () => {
                     </div>
 
                     <div className='py-2 flex justify-center mb-4 '>
-                      <button className='w-[85%]' onClick={() => buyModal(item)}>
+                      <button className='w-[95%]' onClick={() => buyModal(item)}>
                         <p className=' bg-blue-500 font-extrabold text-lg border  px-8 py-2 border-slate-400 rounded-md flex items-center justify-center text-white	'>
                           MUA NGAY
                         </p>

@@ -28,6 +28,31 @@ class ApiProduct extends ApiClientBase {
     });
     return res.data;
   }
+
+  public async downloadProduct(access_token: string, productid: string): Promise<BaseResponse | any> {
+    const res = await this.instance.get(`/api/products/download?product_id=${productid}`, {
+      headers: {
+        Authorization: "Bearer " + access_token,
+      },
+    });
+    return res.data;
+  }
+
+  public async buyProduct(access_token: string, product_id: number, total: number): Promise<BaseResponse | any> {
+    const res = await this.instance.post(
+      `/api/products/buy`,
+      {
+        product_id: product_id,
+        total: total,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      }
+    );
+    return res;
+  }
 }
 
 export default ApiProduct;

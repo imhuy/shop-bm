@@ -4,10 +4,11 @@ import Header from "@/components/Header";
 import AppLayout from "@/components/Layout/AppLayout";
 import { AuthContext } from "@/context/useAuthContext";
 import convertNumbThousand from "@/utils/convertNumbThousand";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { NextPage } from "next";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import * as fs from "fs";
 
 interface ItemType {
   // id: string;
@@ -16,49 +17,40 @@ interface ItemType {
   quantity: number;
   pay: number;
   date: string;
+  transaction: string;
 }
 const History: NextPage<any> = () => {
-  const [listOrder, setListMenu] = useState<ItemType[]>([
-    {
-      tradingCode: "TSKW1683822924",
-      product: "Via Việt XMDT mới về ",
-      quantity: 10,
-      date: "2022",
-      pay: 1000,
-    },
-
-    {
-      tradingCode: "TSKW1683822924",
-      product: "Via Việt XMDT mới về ",
-      quantity: 10,
-      date: "2022",
-      pay: 1000,
-    },
-
-    {
-      tradingCode: "TSKW1683822924",
-      product: "Via Việt XMDT mới về ",
-      quantity: 10,
-      date: "2022",
-      pay: 1000,
-    },
-
-    {
-      tradingCode: "TSKW1683822924",
-      product: "Via Việt XMDT mới về ",
-      quantity: 10,
-      date: "2022",
-      pay: 1000,
-    },
-  ]);
-  const { authState, accountExtendDetail, getAccountExtendDetails } = useContext(AuthContext);
-
+  const { authState, accountExtendDetail } = useContext(AuthContext);
+  const [tracsactionId, setTransactionId] = useState("");
   const { isPending, error, data } = useQuery({
     queryKey: ["getBuyHistory", authState?.access_token],
     queryFn: async () => await productApi.buyHistory(authState?.access_token ?? ""),
   });
 
-  console.log("datadatadatadata", isPending, data);
+  console.log("datadatadata", data);
+
+  const donwloadProduct = useQuery({
+    queryKey: ["downloadProduct", authState?.access_token],
+    queryFn: async () => await productApi.downloadProduct(authState?.access_token ?? "", tracsactionId ?? ""),
+    enabled: false,
+  });
+
+  useEffect(() => {
+    donwloadProduct.refetch();
+  }, [tracsactionId]);
+
+  const createTextFile = async (id: string) => {
+    setTransactionId(id);
+    // let data = await donwloadProduct.data;
+    const fileData = JSON.stringify(id);
+    const blob = new Blob([fileData], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = `bm2fa.com-${id}.text`;
+    link.href = url;
+    link.click();
+  };
+
   return (
     <AppLayout>
       <div className='w-full h-screen flex flex-col'>
@@ -135,7 +127,7 @@ const History: NextPage<any> = () => {
                           <span className=' font-normal text-sm  '>{convertNumbThousand(item?.total)} </span>
                         </td>
                         <td className='text-center font-normal text-sm  w-40 max-w-[160px]  '>
-                          <span className=' font-normal text-sm  '>TC{item?.id}</span>
+                          <span className=' font-normal text-sm  '>{item?.transaction}</span>
                         </td>
                         <td className='text-center font-normal text-sm w-52'>
                           <span className=' font-normal text-sm  '>{item?.product_name}</span>
@@ -152,7 +144,10 @@ const History: NextPage<any> = () => {
                         <td className='text-center font-normal text-sm w-32'>
                           <span className=' font-normal text-sm  text-white gap-x-1   flex '>
                             <span className=' bg-blue-500 p-2 rounded-sm self-center'> Xem thêm</span>
-                            <span className='  bg-green-800 p-2 rounded-sm'>Tải về</span>
+                            <button onClick={() => createTextFile(item.transaction)}>
+                              <span className='  bg-green-800 p-2 rounded-sm'>Tải về</span>
+                            </button>
+
                             <span className=' bg-red-700 p-2 rounded-sm'>Bảo hành</span>
                           </span>
                         </td>

@@ -11,6 +11,15 @@ import moment from "moment";
 import { NextPage } from "next";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+export interface ItemType {
+  key: string;
+  created_at: string;
+  total_amount_after: number;
+  total_amount_before: number;
+  amount: number;
+  friend: string;
+  content: string;
+}
 const Rechange: NextPage<any> = () => {
   const [isOpenInfo, setIsOpenInfo] = useState(false);
   const [title, setTitle] = useState("");
@@ -21,7 +30,7 @@ const Rechange: NextPage<any> = () => {
     setTitle(title);
   };
 
-  const { isPending, error, data } = useQuery({
+  const { isPending, error, data } = useQuery<ItemType[]>({
     queryKey: ["getPaymentHistory", authState?.access_token],
     queryFn: async () => await paymentApi.paymentHistory(authState?.access_token ?? ""),
   });
@@ -70,7 +79,7 @@ const Rechange: NextPage<any> = () => {
               <p className=' font-workSansSemiBold text-2xl text-blue-500'>
                 {convertNumbThousand(accountExtendDetail?.amount)}
               </p>
-              <p className='   text-sm font-workSansSemiBold  text-center mt-1'>Còn Lại</p>
+              <p className='text-sm font-workSansSemiBold text-center mt-1'>Còn Lại</p>
             </div>
           </div>
           <div className='w-[95%] justify-center flex flex-col  gap-y-8  bg-white  border shadow-md rounded-md '>
@@ -193,9 +202,9 @@ const Rechange: NextPage<any> = () => {
                     </th>
                   </tr>
                 </thead>
-                {!isPending && (
+                {!isPending && data && (
                   <tbody>
-                    {data?.map((item: any, i: number) => (
+                    {data?.map((item, i: number) => (
                       <tr
                         key={i}
                         className={`flex  gap-x-6 py-5  px-5 border-b     ${i % 2 == 0 ? "bg-slate-100" : ""}`}
