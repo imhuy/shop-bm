@@ -196,7 +196,7 @@ const AppContent: FC<AppContentTypes> = () => {
 
           <div className=' grid  grid-cols-3  max-sm:grid-cols-1 max-md:grid-cols-2  gap-x-6  gap-y-10  '>
             {data
-              ?.filter((item) => item.categories_id === 3)
+              ?.filter((item) => item.categories_id === 5)
               .map((item, index) => (
                 <div key={index} className='flex w-full  bg-white text-sm    border shadow-md rounded-md'>
                   <div className='flex w-full  flex-col '>
